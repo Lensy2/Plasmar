@@ -1,0 +1,353 @@
+<?php
+
+$progExtruderAD = "SELECT TPE.*,M.PRODUCTO,m2.DESCRIPCIO FROM dbo.tblProgExtrusion AS tpe INNER JOIN dbo.MVTRADE AS m ON TPE.OrdenNro=m.NRODCTO
+	INNER	JOIN dbo.MTMERCIA AS m2 ON m2.CODIGO = m.PRODUCTO
+WHERE tpe.TipoReg='AD'
+AND tpe.Habilitado=1 AND M.TIPODCTO='PD' AND m.ORIGEN='FAC'
+ORDER BY  tpe.OrdenEjec";
+$progExtruderBD = "SELECT TPE.*,M.PRODUCTO,m2.DESCRIPCIO FROM dbo.tblProgExtrusion AS tpe INNER JOIN dbo.MVTRADE AS m ON TPE.OrdenNro=m.NRODCTO
+	INNER	JOIN dbo.MTMERCIA AS m2 ON m2.CODIGO = m.PRODUCTO
+WHERE tpe.TipoReg='BD'
+AND tpe.Habilitado=1 AND M.TIPODCTO='PD' AND m.ORIGEN='FAC'
+ORDER BY  tpe.OrdenEjec";
+
+
+$totalInc = "SELECT Count(*) AS Total FROM ext_inconformidades";
+$totalCM = "SELECT Count(*) AS Total FROM control_mezclas where estado = 'pendiente'";
+$totalCR = "SELECT Count(*) AS Total FROM control_requisitos where estado = 'pendiente'"; 
+$totalCC = "SELECT Count(*) AS Total FROM controles_calidad where estado = 'pendiente'";
+
+$inconformidades_term ="SELECT * FROM dbo.ext_inconformidades order by fecha desc";
+
+//$controles_calidad_pend ="SELECT * FROM dbo.controles_calidad cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado = 'pendiente' order by fecha desc";
+$controles_calidad_pend ="SELECT * FROM dbo.controles_calidad cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado = 'pendiente' order by fecha desc";
+
+$controles_calidad_term ="SELECT * FROM dbo.controles_calidad cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado = 'terminado' order by fecha desc";
+
+$control_mezclas_pend = "SELECT * FROM dbo.control_mezclas cm inner join usuarios us on cm.Idusuario=us.Idusuario where estado = 'pendiente' order by fecha desc";
+
+$control_mezclas_apro = "SELECT * FROM dbo.control_mezclas cm inner join usuarios us on cm.Idusuario=us.Idusuario where estado = 'aprobado' order by fecha desc";
+
+$control_requisitos_pend = "SELECT * FROM dbo.control_requisitos cr inner join usuarios us on cr.Idusuario=us.Idusuario where estado = 'pendiente' order by fecha desc";
+
+$control_requisitos_apro = "SELECT * FROM dbo.control_requisitos cr inner join usuarios us on cr.Idusuario=us.Idusuario where estado = 'aprobado' order by fecha desc";
+
+$lista_liberan = "SELECT  * FROM dbo.LIBERAN";
+$lista_coord = "SELECT  * FROM dbo.COORDINAN";
+$lista_def = "SELECT  * FROM dbo.DEFECTOS";
+
+if (isset($Idinconf)) {
+	$det_inconf = "SELECT * FROM ext_inconformidades inner join usuarios on ext_inconformidades.Idusuario=usuarios.Idusuario where Idext_inconformidades = '".$Idinconf."'";
+}
+if (isset($pedido) && isset($tipo_ext) && isset($idmezcla)) {
+	
+	$contadorRequisitos = "SELECT Count(*) AS Total FROM control_requisitos where num_orden = '".$pedido."' and tipo_ext = '".$tipo_ext."' and num_mezcla = '".$idmezcla."'";
+}
+
+if (isset($pedido) && isset($tipo_ext)) {
+	//Encontrar el total de filas mientras este el mismo pedido y el tipo de extrusion
+	$contadorMezclas = "SELECT Count(*) AS Total FROM control_mezclas where num_orden = '".$pedido."' and tipo_ext = '".$tipo_ext."'";
+}
+
+
+if (isset($pedido) && isset($tipoPedidoEtq)) {
+
+	//$numRollos = "SELECT * from dbo.ETQPLASMAR where PEDIDO = '".$pedido."' AND CTRABAJO = '".$tipoPedidoEtq."'";
+	$numRollos = "SELECT e.* from dbo.ETQPLASMAR e left JOIN SCPBD.dbo.controles_calidad c ON CAST(e.PEDIDO AS INT)=c.num_orden AND CAST(e.ROLLO AS int)=c.num_rollo where e.PEDIDO = '".$pedido."' AND e.CTRABAJO = '".$tipoPedidoEtq."' AND c.num_rollo IS NULL";
+}
+
+if (isset($pedido) && isset($tipoPedidoEtq) && isset($num_rollo)) {
+$infoRollo = "SELECT * from dbo.ETQPLASMAR where PEDIDO = '".$pedido."' AND CTRABAJO = '".$tipoPedidoEtq."' AND ROLLO = '".$num_rollo."'";}
+
+if (isset($pedido)) {
+
+/*Consulta solo tabla EXTRUSION para comprobacion de existencia*/
+$comprobacionExt = "SELECT * FROM dbo.EXTRUSION WHERE PEDIDO = '$pedido'";
+/*Consulta solo tabla EXTRUSIONl para comprobacion de existencia*/
+$comprobacionExtL = "SELECT * FROM dbo.EXTRUSIONL WHERE PEDIDO ='$pedido'";
+
+/*Consulta de un pedido en tabla EXTRUSION*/
+$leerExt = 'SELECT dbo.EXTRUSION.IDEXTRU, 
+dbo.EXTRUSION.PEDIDO AS PEDIDO, 
+dbo.EXTRUSION.FHENTREGA, 
+dbo.MTPROCLI.NOMBRE AS CLIENTE, 
+dbo.MTPROCLI.NIT, 
+dbo.MTMERCIA.DESCRIPCIO AS DESCRIPCION, 
+dbo.MTMERCIA.DESCRIP2 AS DESCRIPCION2, 
+dbo.MTMERCIA.CODIGO, 
+dbo.MEZCLASMQ.NMAQUINA AS EXTRUSORA, 
+dbo.EXTRUSION.KILOSPD AS KGPEDIDOS, 
+dbo.EXTRUSION.KILOSBB AS PESOMAXBOBINA, 
+dbo.EXTRUSION.RADIORLL AS RADIODEBOBINA, 
+dbo.EXTRUSION.CARACTERIS AS CARACTERISTICA, 
+dbo.EXTRUSION.FUELLE, 
+dbo.EXTRUSION.PRESENTA AS PRESENTACION, 
+dbo.EXTRUSION.USO AS USOEMPAQUE, 
+dbo.EXTRUSION.CMSCORTE CORTE2, 
+dbo.EXTRUSION.CORTE AS CORTE1, 
+dbo.EXTRUSION.TRATAMTO, 
+dbo.EXTRUSION.DINAS, 
+dbo.EXTRUSION.PLATINA, 
+dbo.EXTRUSION.GRAFILADO, 
+dbo.EXTRUSION.ANCHOMN, 
+dbo.EXTRUSION.ANCHO, 
+dbo.EXTRUSION.ANCHOMX, 
+dbo.EXTRUSION.CALIBREMN, 
+dbo.EXTRUSION.CALIBRE, 
+dbo.EXTRUSION.CALIBREMX, 
+dbo.EXTRUSION.PESOMOLMN, 
+dbo.EXTRUSION.PESOMOL, 
+dbo.EXTRUSION.PESOMOLMX,
+dbo.MEZCLASMQ.VELHALA AS VELOHALADOR, 
+dbo.MEZCLASMQ.VELEMBO AS VELOBOBINADOR, 
+dbo.MEZCLASMQ.VELTOR_A, 
+dbo.MEZCLASMQ.VELTOR_B, 
+dbo.MEZCLASMQ.VELTOR_C, 
+dbo.MEZCLASMQ.VELTOR_D, 
+dbo.MEZCLASMQ.VELTOR_E, 
+dbo.MEZCLASMQ.VELTOR_F, 
+dbo.MEZCLASMQ.VELTOR_G, 
+dbo.MEZCLASMQ.MEZCLA_A1, 
+dbo.MEZCLASMQ.KILOS_A1, 
+dbo.MEZCLASMQ.MEZCLA_A2, 
+dbo.MEZCLASMQ.KILOS_A2, 
+dbo.MEZCLASMQ.MEZCLA_A3, 
+dbo.MEZCLASMQ.KILOS_A3, 
+dbo.MEZCLASMQ.MEZCLA_A4, 
+dbo.MEZCLASMQ.KILOS_A4, 
+dbo.MEZCLASMQ.MEZCLA_A5, 
+dbo.MEZCLASMQ.KILOS_A5, 
+dbo.MEZCLASMQ.MEZCLA_A6, 
+dbo.MEZCLASMQ.KILOS_A6, 
+dbo.MEZCLASMQ.MEZCLA_B1, 
+dbo.MEZCLASMQ.KILOS_B1, 
+dbo.MEZCLASMQ.MEZCLA_B2, 
+dbo.MEZCLASMQ.KILOS_B2, 
+dbo.MEZCLASMQ.MEZCLA_B3, 
+dbo.MEZCLASMQ.KILOS_B3, 
+dbo.MEZCLASMQ.MEZCLA_B4, 
+dbo.MEZCLASMQ.KILOS_B4, 
+dbo.MEZCLASMQ.MEZCLA_B5, 
+dbo.MEZCLASMQ.KILOS_B5, 
+dbo.MEZCLASMQ.MEZCLA_B6, 
+dbo.MEZCLASMQ.KILOS_B6, 
+dbo.MEZCLASMQ.MEZCLA_C1, 
+dbo.MEZCLASMQ.KILOS_C1, 
+dbo.MEZCLASMQ.MEZCLA_C2, 
+dbo.MEZCLASMQ.KILOS_C2, 
+dbo.MEZCLASMQ.MEZCLA_C3, 
+dbo.MEZCLASMQ.KILOS_C3, 
+dbo.MEZCLASMQ.MEZCLA_C4, 
+dbo.MEZCLASMQ.KILOS_C4, 
+dbo.MEZCLASMQ.MEZCLA_C5, 
+dbo.MEZCLASMQ.KILOS_C5, 
+dbo.MEZCLASMQ.MEZCLA_C6, 
+dbo.MEZCLASMQ.KILOS_C6, 
+dbo.MEZCLASMQ.MEZCLA_D1, 
+dbo.MEZCLASMQ.KILOS_D1, 
+dbo.MEZCLASMQ.MEZCLA_D2, 
+dbo.MEZCLASMQ.KILOS_D2, 
+dbo.MEZCLASMQ.MEZCLA_D3, 
+dbo.MEZCLASMQ.KILOS_D3, 
+dbo.MEZCLASMQ.MEZCLA_D4, 
+dbo.MEZCLASMQ.KILOS_D4, 
+dbo.MEZCLASMQ.MEZCLA_D5, 
+dbo.MEZCLASMQ.KILOS_D5, 
+dbo.MEZCLASMQ.MEZCLA_D6, 
+dbo.MEZCLASMQ.KILOS_D6, 
+dbo.MEZCLASMQ.MEZCLA_E1, 
+dbo.MEZCLASMQ.KILOS_E1, 
+dbo.MEZCLASMQ.MEZCLA_E2, 
+dbo.MEZCLASMQ.KILOS_E2, 
+dbo.MEZCLASMQ.MEZCLA_E3, 
+dbo.MEZCLASMQ.KILOS_E3, 
+dbo.MEZCLASMQ.MEZCLA_E4, 
+dbo.MEZCLASMQ.KILOS_E4, 
+dbo.MEZCLASMQ.MEZCLA_E5, 
+dbo.MEZCLASMQ.KILOS_E5, 
+dbo.MEZCLASMQ.MEZCLA_E6, 
+dbo.MEZCLASMQ.KILOS_E6, 
+dbo.MEZCLASMQ.MEZCLA_F1, 
+dbo.MEZCLASMQ.KILOS_F1, 
+dbo.MEZCLASMQ.MEZCLA_F2, 
+dbo.MEZCLASMQ.KILOS_F2, 
+dbo.MEZCLASMQ.MEZCLA_F3, 
+dbo.MEZCLASMQ.KILOS_F3, 
+dbo.MEZCLASMQ.MEZCLA_F4, 
+dbo.MEZCLASMQ.KILOS_F4, 
+dbo.MEZCLASMQ.MEZCLA_F5, 
+dbo.MEZCLASMQ.KILOS_F5, 
+dbo.MEZCLASMQ.MEZCLA_F6, 
+dbo.MEZCLASMQ.KILOS_F6, 
+dbo.MEZCLASMQ.MEZCLA_G1, 
+dbo.MEZCLASMQ.KILOS_G1, 
+dbo.MEZCLASMQ.MEZCLA_G2, 
+dbo.MEZCLASMQ.KILOS_G2, 
+dbo.MEZCLASMQ.MEZCLA_G3, 
+dbo.MEZCLASMQ.KILOS_G3, 
+dbo.MEZCLASMQ.MEZCLA_G4, 
+dbo.MEZCLASMQ.KILOS_G4, 
+dbo.MEZCLASMQ.MEZCLA_G5, 
+dbo.MEZCLASMQ.KILOS_G5, 
+dbo.MEZCLASMQ.MEZCLA_G6, 
+dbo.MEZCLASMQ.KILOS_G6, 
+dbo.EXTRUSION.DESTINO, 
+dbo.EXTRUSION.TIPOPED, 
+dbo.EXTRUSION.OBSERVA1, 
+dbo.EXTRUSION.OBSERVA2, 
+dbo.EXTRUSION.OBSERVA3, 
+dbo.EXTRUSION.OBSERVA4, 
+dbo.EXTRUSION.OBSERVA5, 
+dbo.EXTRUSION.OBSERVA6, 
+dbo.EXTRUSION.OBSERVA7, 
+dbo.EXTRUSION.OBSERVA8
+FROM dbo.EXTRUSION 
+INNER JOIN dbo.MEZCLASMQ ON dbo.EXTRUSION.ORDENNRO = dbo.MEZCLASMQ.ORDENNRO
+INNER JOIN dbo.MTCOLOR ON dbo.EXTRUSION.COLOR = dbo.MTCOLOR.CODCOLOR
+INNER JOIN dbo.MTPROCLI ON  dbo.MTPROCLI.NIT = dbo.EXTRUSION.NIT
+INNER JOIN dbo.MTMERCIA ON dbo.EXTRUSION.CODIGO =  dbo.MTMERCIA.CODIGO
+	WHERE EXTRUSION.PEDIDO = '.$pedido.'';
+
+/*Consulta de un pedido en tabla EXTRUSIONL*/
+$leerExtL = 'SELECT 
+dbo.EXTRUSIONL.IDEXTRU, 
+dbo.EXTRUSIONL.PEDIDO, 
+dbo.EXTRUSIONL.FHENTREGA, 
+dbo.MTPROCLI.NOMBRE AS CLIENTE, 
+dbo.MTPROCLI.NIT, 
+dbo.MTMERCIA.DESCRIPCIO AS DESCRIPCION, 
+dbo.MTMERCIA.DESCRIP2 AS DESCRIPCION2, 
+dbo.MTMERCIA.CODIGO, 
+dbo.MEZCLASMQL.NMAQUINA AS EXTRUSORA, 
+dbo.EXTRUSIONL.KILOSPD AS KGPEDIDOS, 
+dbo.EXTRUSIONL.KILOSBB AS PESOMAXBOBINA, 
+dbo.EXTRUSIONL.RADIORLL AS RADIODEBOBINA, 
+dbo.EXTRUSIONL.CARACTERIS AS CARACTERISTICA, 
+dbo.EXTRUSIONL.FUELLE, 
+dbo.EXTRUSIONL.PRESENTA AS PRESENTACION, 
+dbo.EXTRUSIONL.USO AS USOEMPAQUE, 
+dbo.EXTRUSIONL.CMSCORTE AS CORTE2,
+dbo.EXTRUSIONL.CORTE AS CORTE1, 
+dbo.EXTRUSIONL.TRATAMTO, 
+dbo.EXTRUSIONL.DINAS, 
+dbo.EXTRUSIONL.PLATINA, 
+dbo.EXTRUSIONL.GRAFILADO, 
+dbo.EXTRUSIONL.ANCHOMN, 
+dbo.EXTRUSIONL.ANCHO, 
+dbo.EXTRUSIONL.ANCHOMX, 
+dbo.EXTRUSIONL.CALIBREMN, 
+dbo.EXTRUSIONL.CALIBRE, 
+dbo.EXTRUSIONL.CALIBREMX, 
+dbo.EXTRUSIONL.PESOMOLMN, 
+dbo.EXTRUSIONL.PESOMOL, 
+dbo.EXTRUSIONL.PESOMOLMX, 
+dbo.MEZCLASMQL.VELHALA AS VELOHALADOR, 
+dbo.MEZCLASMQL.VELEMBO AS VELOBOBINADOR, 
+dbo.MEZCLASMQL.VELTOR_A, 
+dbo.MEZCLASMQL.VELTOR_B, 
+dbo.MEZCLASMQL.VELTOR_C, 
+dbo.MEZCLASMQL.VELTOR_D, 
+dbo.MEZCLASMQL.VELTOR_E, 
+dbo.MEZCLASMQL.VELTOR_F, 
+dbo.MEZCLASMQL.VELTOR_G, 
+dbo.MEZCLASMQL.MEZCLA_A1, 
+dbo.MEZCLASMQL.KILOS_A1, 
+dbo.MEZCLASMQL.MEZCLA_A2, 
+dbo.MEZCLASMQL.KILOS_A2, 
+dbo.MEZCLASMQL.MEZCLA_A3, 
+dbo.MEZCLASMQL.KILOS_A3, 
+dbo.MEZCLASMQL.MEZCLA_A4, 
+dbo.MEZCLASMQL.KILOS_A4, 
+dbo.MEZCLASMQL.MEZCLA_A5, 
+dbo.MEZCLASMQL.KILOS_A5, 
+dbo.MEZCLASMQL.MEZCLA_A6, 
+dbo.MEZCLASMQL.KILOS_A6, 
+dbo.MEZCLASMQL.MEZCLA_B1, 
+dbo.MEZCLASMQL.KILOS_B1, 
+dbo.MEZCLASMQL.MEZCLA_B2, 
+dbo.MEZCLASMQL.KILOS_B2, 
+dbo.MEZCLASMQL.MEZCLA_B3, 
+dbo.MEZCLASMQL.KILOS_B3, 
+dbo.MEZCLASMQL.MEZCLA_B4, 
+dbo.MEZCLASMQL.KILOS_B4, 
+dbo.MEZCLASMQL.MEZCLA_B5, 
+dbo.MEZCLASMQL.KILOS_B5, 
+dbo.MEZCLASMQL.MEZCLA_B6, 
+dbo.MEZCLASMQL.KILOS_B6, 
+dbo.MEZCLASMQL.MEZCLA_C1, 
+dbo.MEZCLASMQL.KILOS_C1, 
+dbo.MEZCLASMQL.MEZCLA_C2, 
+dbo.MEZCLASMQL.KILOS_C2, 
+dbo.MEZCLASMQL.MEZCLA_C3, 
+dbo.MEZCLASMQL.KILOS_C3, 
+dbo.MEZCLASMQL.MEZCLA_C4, 
+dbo.MEZCLASMQL.KILOS_C4, 
+dbo.MEZCLASMQL.MEZCLA_C5, 
+dbo.MEZCLASMQL.KILOS_C5, 
+dbo.MEZCLASMQL.MEZCLA_C6, 
+dbo.MEZCLASMQL.KILOS_C6, 
+dbo.MEZCLASMQL.MEZCLA_D1, 
+dbo.MEZCLASMQL.KILOS_D1, 
+dbo.MEZCLASMQL.MEZCLA_D2, 
+dbo.MEZCLASMQL.KILOS_D2, 
+dbo.MEZCLASMQL.MEZCLA_D3, 
+dbo.MEZCLASMQL.KILOS_D3, 
+dbo.MEZCLASMQL.MEZCLA_D4, 
+dbo.MEZCLASMQL.KILOS_D4, 
+dbo.MEZCLASMQL.MEZCLA_D5, 
+dbo.MEZCLASMQL.KILOS_D5, 
+dbo.MEZCLASMQL.MEZCLA_D6, 
+dbo.MEZCLASMQL.KILOS_D6, 
+dbo.MEZCLASMQL.MEZCLA_E1, 
+dbo.MEZCLASMQL.KILOS_E1, 
+dbo.MEZCLASMQL.MEZCLA_E2, 
+dbo.MEZCLASMQL.KILOS_E2, 
+dbo.MEZCLASMQL.MEZCLA_E3, 
+dbo.MEZCLASMQL.KILOS_E3, 
+dbo.MEZCLASMQL.MEZCLA_E4, 
+dbo.MEZCLASMQL.KILOS_E4, 
+dbo.MEZCLASMQL.MEZCLA_E5, 
+dbo.MEZCLASMQL.KILOS_E5, 
+dbo.MEZCLASMQL.MEZCLA_E6, 
+dbo.MEZCLASMQL.KILOS_E6, 
+dbo.MEZCLASMQL.MEZCLA_F1, 
+dbo.MEZCLASMQL.KILOS_F1, 
+dbo.MEZCLASMQL.MEZCLA_F2, 
+dbo.MEZCLASMQL.KILOS_F2, 
+dbo.MEZCLASMQL.MEZCLA_F3, 
+dbo.MEZCLASMQL.KILOS_F3, 
+dbo.MEZCLASMQL.MEZCLA_F4, 
+dbo.MEZCLASMQL.KILOS_F4, 
+dbo.MEZCLASMQL.MEZCLA_F5, 
+dbo.MEZCLASMQL.KILOS_F5, 
+dbo.MEZCLASMQL.MEZCLA_F6, 
+dbo.MEZCLASMQL.KILOS_F6, 
+dbo.MEZCLASMQL.MEZCLA_G1, 
+dbo.MEZCLASMQL.KILOS_G1, 
+dbo.MEZCLASMQL.MEZCLA_G2, 
+dbo.MEZCLASMQL.KILOS_G2, 
+dbo.MEZCLASMQL.MEZCLA_G3, 
+dbo.MEZCLASMQL.KILOS_G3, 
+dbo.MEZCLASMQL.MEZCLA_G4, 
+dbo.MEZCLASMQL.KILOS_G4, 
+dbo.MEZCLASMQL.MEZCLA_G5, 
+dbo.MEZCLASMQL.KILOS_G5, 
+dbo.MEZCLASMQL.MEZCLA_G6, 
+dbo.MEZCLASMQL.KILOS_G6, 
+dbo.EXTRUSIONL.DESTINO, 
+dbo.EXTRUSIONL.TIPOPED, 
+dbo.EXTRUSIONL.OBSERVA1, 
+dbo.EXTRUSIONL.OBSERVA2, 
+dbo.EXTRUSIONL.OBSERVA3, 
+dbo.EXTRUSIONL.OBSERVA4, 
+dbo.EXTRUSIONL.OBSERVA5, 
+dbo.EXTRUSIONL.OBSERVA6, 
+dbo.EXTRUSIONL.OBSERVA7, 
+dbo.EXTRUSIONL.OBSERVA8
+FROM dbo.EXTRUSIONL INNER JOIN dbo.MEZCLASMQL ON dbo.EXTRUSIONL.ORDENNRO = dbo.MEZCLASMQL.ORDENNRO
+	INNER JOIN dbo.MTCOLOR ON dbo.EXTRUSIONL.COLOR = dbo.MTCOLOR.CODCOLOR
+	INNER JOIN dbo.MTPROCLI ON  dbo.MTPROCLI.NIT = dbo.EXTRUSIONL.NIT
+	INNER JOIN dbo.MTMERCIA ON dbo.EXTRUSIONL.CODIGO =  dbo.MTMERCIA.CODIGO
+WHERE dbo.EXTRUSIONL.PEDIDO='.$pedido.'';
+}
+?>
