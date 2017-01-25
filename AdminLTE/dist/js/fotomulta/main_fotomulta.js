@@ -1,6 +1,7 @@
 $(function () {               
         
-        
+   
+
     $("#ver-admin").click(function() {
           var a = $(".val-admin").val();
         window.location = "http://"+a+"/apps/administracion/dashboard.php";

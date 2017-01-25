@@ -14,6 +14,15 @@
     <script src="<?php echo $enlace;?>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="<?php echo $enlace;?>/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo $enlace;?>/jquery-ui/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript">
+        $('#fecha_fotomulta').datetimepicker({
+            dateFormat: "dd-mm-yy"
+        });
+
+
+    </script>
+    
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);

@@ -38,15 +38,21 @@ if (isset($_SESSION['usuario'])) {
 	  				<form id="frmInc" action="procesar_fotomulta.php" method="post" accept-charset="utf-8">
         <div class="modal-body">        
           <h4 align="center"><b>Formulario - Foto Multa</b></h4>
-
+            <label>Fecha de foto multa</label>
+            <div class="input-group date">
+                <input type="text" data-format="dd/MM/yyyy hh:mm:ss" class="form-control" id="fecha_fotomulta" name="fecha_fotomulta">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
                        
             <label>Tipo de Inconformidad</label>
               <select class="form-control" name="tipo_inconf">
-                <option value="NO INOCUO">NO INOCUO</option>
+                <option value="INCUMPLIMIENTO AL S.G.I">INCUMPLIMIENTO AL S.G.I</option>
                 <option value="NO CONFORME">NO CONFORME</option>
                 <option value="EN TRANSITO">EN TRANSITO</option>
               </select>
-            <label>Tipo de Proceso</label>
+            <label>Tipo de Proceso o área</label>
 
               <select class="form-control" name="tipo_proceso">
                 <option value=""></option>
@@ -69,31 +75,7 @@ if (isset($_SESSION['usuario'])) {
                 <option value="PROVEEDOR">PROVEEDOR</option>
               </select>
 
-            <label>Pedido #</label>
-            <input type="number" step="any" class="form-control" name="pedido">
-            <label>Cliente</label>
-            <input id="comp-cliente" type="text" class="form-control" name="nom_cliente">
-            <label>Descripción</label>
-            <input type="text" class="form-control" name="descripcion" >
-            <label>Referencia</label>
-            <input type="number" step="any" class="form-control" name="referencia" >
-            <label>Rollo N°</label>
-            <input type="number" step="any" class="form-control" name="num_rollo">
-            <label>Maquina(#):</label>
-            <input type="number" step="any" class="form-control" name="maquina">
-            <label>Cantidad(Kg)</label>
-            <input type="number" step="any" class="form-control" name="cantidad">
-            <label>Detectada por</label>
-            <input  type="text" class="form-control" name="detectada_por" value="<?php echo $_SESSION["nombreuser"]; ?>" readonly>
-            <label>Cargo:</label>
-            <input  type="text" class="form-control" name="cargo">
-             <label>Empleado responsable:</label>
-                    <i id="limpiar" style="cursor: pointer;" class="fa fa-times"></i>
-                     <br>
-                     <input id="operarios" type="text" class="form-control" placeholder="Nombre empleado" name="op_res" required>
-            <!--<label>Causa:</label>
-            <textarea id="causas-general" class="form-control" style="max-width: 100%;" name="causa"></textarea>-->
-                        <label>Causa:</label>
+             <label>Causa:</label>
             <select class="form-control" name="causa">
               <option value="No definida">No definida.</option>
               <option value="Agacharse sin flexionar las rodillas o nos usar ayudas mécanica disponibles.">Agacharse sin flexionar las rodillas o nos usar ayudas mécanica disponibles.</option>
@@ -144,7 +126,33 @@ if (isset($_SESSION['usuario'])) {
               <option value="Uso de joyas en lugares prohibidos.">Uso de joyas en lugares prohibidos.</option>
               <option value="Uso del uniforme fuera de las instalaciones.">Uso del uniforme fuera de las instalaciones.</option>
               <option value="Uso inadecuado del uniforme.">Uso inadecuado del uniforme.</option>
-            </select>       
+            </select> 
+
+            <label>Pedido #</label>
+            <input type="number" step="any" class="form-control" name="pedido">
+            <label>Cliente</label>
+            <input id="comp-cliente" type="text" class="form-control" name="nom_cliente">
+            <label>Descripción</label>
+            <input type="text" class="form-control" name="descripcion" >
+            <label>Referencia</label>
+            <input type="number" step="any" class="form-control" name="referencia" >
+            <label>Rollo N°</label>
+            <input type="number" step="any" class="form-control" name="num_rollo">
+            <label>Maquina(#):</label>
+            <input type="number" step="any" class="form-control" name="maquina">
+            <label>Cantidad(Kg)</label>
+            <input type="number" step="any" class="form-control" name="cantidad">
+            <label>Detectada por</label>
+            <input  type="text" class="form-control" name="detectada_por" value="<?php echo $_SESSION["nombreuser"]; ?>" readonly>
+             <label>Empleado responsable:</label>
+                    <i id="limpiar" style="cursor: pointer;" class="fa fa-times"></i>
+                     <br>
+                     <input id="operarios" type="text" class="form-control" placeholder="Nombre empleado" name="op_res" required>
+            <label>Area</label>
+            <input class="form-control" id="area" name="area">
+            <!--<label>Causa:</label>
+            <textarea id="causas-general" class="form-control" style="max-width: 100%;" name="causa"></textarea>-->
+                             
            
             <label>Descripción:</label>
             <textarea class="form-control" style="max-width: 100%;" name="descripcion_inc"></textarea>

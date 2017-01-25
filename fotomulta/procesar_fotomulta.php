@@ -14,10 +14,11 @@ if (empty($descripcion =$_POST['descripcion'])) {$descripcion = 'null';} else {$
 if (empty($referencia =$_POST['referencia'])) {$referencia = 0;} else {$referencia =$_POST['referencia'];}
 
 if (empty($cliente = $_POST['nom_cliente'])) {$cliente = 'null';} else {$cliente = $_POST['nom_cliente'];}
+if (empty($area = $_POST['area'])) {$area = 'null';} else {$area = $_POST['area'];}
 	
 
 	$h = "5";// Hour for time zone goes here e.g. +7 or -4, just remove the + or -
-	$hm = $h * 60; 
+	$hm = $h * 60;
 	$ms = $hm * 60;
 	$fecha = gmdate("d/m/Y g:i:s A", time()-($ms));
 
@@ -29,8 +30,6 @@ if (empty($cliente = $_POST['nom_cliente'])) {$cliente = 'null';} else {$cliente
 	if (empty($cantidad = $_POST['cantidad'])) {$cantidad = 0;} else {$cantidad = $_POST['cantidad'];}
 	$detectada_por = $_POST['detectada_por'];
 
-
-	$cargo = $_POST['cargo'];
 	$causa =$_POST['causa'];
 	$operario_res =$_POST['op_res'];
 
@@ -39,20 +38,23 @@ if (empty($cliente = $_POST['nom_cliente'])) {$cliente = 'null';} else {$cliente
 	$dispo_final = $_POST['dispo_final'];
 
 	$iduser = $_SESSION['idusuario'];
-	
+
+	if (empty($_POST['fecha_fotomulta'])) {
+		$fecha_fotomulta = $fecha;
+	} else {
+		$fecha_fotomulta = $_POST['fecha_fotomulta'];
+	}
 	include '../includes/dbconfig.php';
 
-	$cadena = "INSERT INTO foto_multas (num_orden,cliente,descripcion,referencia,fecha,tipo_inconf,tipo_proceso,num_rollo,maquina,cantidad,detectada_por,cargo,operario_res,causa,descripcion_inc,dispo_final,evidencia,Idusuario) VALUES ($pedido, '$cliente', '$descripcion', $referencia, '$fecha', '$inconformidad','$tipo_proceso', $num_rollo, $maquina, $cantidad, '$detectada_por', '$cargo', '$operario_res', '$causa', '$descripcion_inc','$dispo_final', '$evidencia', $iduser);";
-
-	echo $cadena;
-		$proceso = sqlsrv_query($connSCPBD, $cadena);
+	$cadena = "INSERT INTO foto_multas (num_orden,cliente,descripcion,referencia,fecha,tipo_inconf,tipo_proceso,num_rollo,maquina,cantidad,detectada_por,operario_res,causa,descripcion_inc,dispo_final,evidencia,Idusuario,fecha_fotomulta,area) VALUES ($pedido, '$cliente', '$descripcion', $referencia, '$fecha', '$inconformidad','$tipo_proceso', $num_rollo, $maquina, $cantidad, '$detectada_por', '$operario_res', '$causa', '$descripcion_inc','$dispo_final', '$evidencia', $iduser,'$fecha_fotomulta','$area');";
+	
+	
+	$proceso = sqlsrv_query($connSCPBD, $cadena);
 		if ($proceso) {
 			echo "<h4>¡Guardado con Exito!</h4>";
 		} else {
 			echo "<h4>¡Error al guardar!</h4>";
 		}
-
-	
 	sqlsrv_close( $connSCPBD );
 	header("Location:  foto_multas.php");
 

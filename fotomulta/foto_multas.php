@@ -76,9 +76,9 @@ while($fila = sqlsrv_fetch_object($registros))
     {
         echo "<td><span class='label label-warning'>EN TRANSITO</span></td>";
     }
-    elseif ($fila->tipo_inconf == 'NO INOCUO')
+    elseif ($fila->tipo_inconf == 'INCUMPLIMIENTO AL S.G.I')
     {
-        echo "<td><span class='label label-danger'>NO INOCUO</span></td>";
+        echo "<td><span class='label label-danger'>INCUMPLIMIENTO AL S.G.I</span></td>";
     }
         echo "<td><a href='ver_fotomulta.php?id=$fila->Idfoto_multas'>Detalle</a><i class='fa fa-fw fa-eye'></i></td>";
   echo "</tr>";
