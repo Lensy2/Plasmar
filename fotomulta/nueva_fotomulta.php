@@ -56,19 +56,19 @@ if (isset($_SESSION['usuario'])) {
             <select class="auto_causas form-control" name="causa"></select> 
 
             <label>Pedido #</label>
-            <input type="number" step="any" class="form-control" name="pedido">
+            <input type="number" step="any" class="form-control" name="pedido" id="pedido">
             <label>Cliente</label>
             <input id="comp-cliente" type="text" class="form-control" name="nom_cliente">
             <label>Descripción</label>
-            <input type="text" class="form-control" name="descripcion" >
+            <input type="text" class="form-control" name="descripcion" id="descripcion">
             <label>Referencia</label>
-            <input type="number" step="any" class="form-control" name="referencia" >
+            <input type="number" step="any" class="form-control" name="referencia" id="referencia">
             <label>Rollo N°</label>
-            <input type="number" step="any" class="form-control" name="num_rollo">
+            <input type="number" step="any" class="form-control" name="num_rollo" id="num_rollo">
             <label>Maquina(#):</label>
             <input type="number" step="any" class="form-control" name="maquina">
             <label>Cantidad(Kg)</label>
-            <input type="number" step="any" class="form-control" name="cantidad">
+            <input type="number" step="any" class="form-control" name="cantidad" id="cantidad">
             <label>Detectada por</label>
             <input  type="text" class="form-control" name="detectada_por" value="<?php echo $_SESSION["nombreuser"]; ?>" readonly>
              <label>Empleado responsable:</label>
@@ -84,7 +84,7 @@ if (isset($_SESSION['usuario'])) {
             <label>Descripción:</label>
             <textarea class="form-control" style="max-width: 100%;" name="descripcion_inc"></textarea>
             <label>Disposición final</label>
-              <select class="form-control" name="dispo_final">
+              <select class="form-control" name="dispo_final" id="dispo_final">
                 <option value="DESECHAR">DESECHAR</option>
                 <option value="CONCESION">CONCESION</option>
                 <option value="REPROCESO">RE-PROCESO</option>

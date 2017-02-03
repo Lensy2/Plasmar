@@ -157,7 +157,7 @@ $(function () {
   }); 
 
   /*
-  *Validacion de campos requeridos Producto
+  *Validacion de campos requeridos Listas desplegables
   */
   function comprobarCamposAuto(){
      var correcto=true;
@@ -218,18 +218,48 @@ $(function () {
     e.preventDefault();
   });
 
-
+  /*
+  *Reestablecer el select Causas al momento de dar click sobre los 
+  *select Tipo_inconf o Tipo_proceso
+  */
   $("body").on("click","#select2-tipo_inconf-container", function(e){
-
     $(".auto_causas").select2('destroy'); 
     $(".auto_causas").text(''); 
-  e.preventDefault();
+    e.preventDefault();
   });
+
   $("body").on("click","#select2-tipo_proceso-container", function(e){
     $(".auto_causas").select2('destroy');
     $(".auto_causas").text('');
-  e.preventDefault();
+    e.preventDefault();
   });
+  /*
+  *Deshabilitar ciertos campos de acuerdo a un valor del select Tipo_inconf
+  */
+  $('#tipo_inconf').change(function() {
+    var tipo = $('#tipo_inconf :selected').text();
+    if (tipo == 'INCUMPLIMIENTO AL S.G.I') {
+      $('#pedido').prop( "disabled", true );
+      $('#comp-cliente').prop( "disabled", true );
+      $('#descripcion').prop( "disabled", true );  
+      $('#referencia').prop( "disabled", true );
+      $('#num_rollo').prop( "disabled", true );
+      $('#cantidad').prop( "disabled", true );
+      $('#dispo_final').prop( "disabled", true );
+
+          //$('#text2').prop( "disabled", false )
+    }else{
+      $('#pedido').prop( "disabled", false );    
+      $('#comp-cliente').prop( "disabled", false );
+      $('#descripcion').prop( "disabled", false );  
+      $('#referencia').prop( "disabled", false );
+      $('#num_rollo').prop( "disabled", false );
+      $('#cantidad').prop( "disabled", false );
+      $('#dispo_final').prop( "disabled", false );
+    }
+
+  });
+
 
 
 
