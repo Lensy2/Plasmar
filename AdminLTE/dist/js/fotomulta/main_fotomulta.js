@@ -1,7 +1,5 @@
 $(function () {               
         
-   
-
     $("#ver-admin").click(function() {
           var a = $(".val-admin").val();
         window.location = "http://"+a+"/apps/administracion/dashboard.php";
@@ -103,6 +101,137 @@ $(function () {
         $("#cadenalista").val(nuevaCadena); 
         console.log('Files selected - ' + fstack.length);
     }); 
-        
+
+  /*
+  *Autocompletado de Tipos
+  */
+  $( ".auto_tipo" ).select2({
+    placeholder: "Seleccionar un Tipo de Inconformidad",
+      ajax: {
+          url: "listaInconformidades.php?t=1",
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+              return {
+                  q: params.term // search term
+              };
+          },
+          processResults: function (data) {
+              // parse the results into the format expected by Select2.
+              // since we are using custom formatting functions we do not need to
+              // alter the remote JSON data
+              return {
+                  results: data
+              };
+          },
+          cache: true
+      },
+      minimumInputLength: 0
+  }); 
+  /*
+  *Autocompletado de Procesos
+  */
+  $( ".auto_procesos" ).select2({
+    placeholder: "Seleccionar un Proceso",
+      ajax: {
+          url: "listaInconformidades.php?t=2",
+          dataType: 'json',
+          cache: false,
+          delay: 250,
+          data: function (params) {
+              return {
+                  q: params.term // search term
+              };
+          },
+          processResults: function (data) {
+              // parse the results into the format expected by Select2.
+              // since we are using custom formatting functions we do not need to
+              // alter the remote JSON data
+              return {
+                  results: data
+              };
+          },
+          cache: true
+      },
+      minimumInputLength: 0
+  }); 
+
+  /*
+  *Validacion de campos requeridos Producto
+  */
+  function comprobarCamposAuto(){
+     var correcto=true;
+     var selectTipo_inconf=$('#tipo_inconf:required');
+     var selectTipo_proceso=$('#tipo_proceso:required');
+     $(selectTipo_inconf).each(function() {
+        if($(this).text()=='' || $(this).text()=='No Products Found'){
+           correcto=false;
+           $(this).addClass('error');
+        }
+     });
+     $(selectTipo_proceso).each(function() {
+        if($(this).text()=='' || $(this).text()=='No Products Found'){
+           correcto=false;
+           $(this).addClass('error');
+        }
+     });
+     return correcto;
+  }
+
+
+
+  $("body").on("click",".auto_causas", function(e){
+    var res = comprobarCamposAuto();
+    if (res) {
+      /*
+      *Se activa autocompletar si los campos Tipo de inconformidad y proceso estan llenos
+      */
+      var txttipo_inconf = $('#tipo_inconf :selected').text();  
+      var txttipo_proceso = $('#tipo_proceso :selected').text();
+
+      $( ".auto_causas" ).select2({
+        placeholder: "Seleccionar una Causa",
+          ajax: {
+              url: "listaInconformidades.php?t=3&tipo_inc="+txttipo_inconf+"&proceso="+txttipo_proceso,
+              dataType: 'json',
+              delay: 250,
+              data: function (params) {
+                  return {
+                      q: params.term // search term
+                  };
+              },
+              processResults: function (data) {
+                  // parse the results into the format expected by Select2.
+                  // since we are using custom formatting functions we do not need to
+                  // alter the remote JSON data
+                  return {
+                      results: data
+                  };
+              },
+              cache: false
+          },
+          minimumInputLength: 0
       });
+    }else{
+      alert('Por favor llene los campos')
+    }
+    e.preventDefault();
+  });
+
+
+  $("body").on("click","#select2-tipo_inconf-container", function(e){
+
+    $(".auto_causas").select2('destroy'); 
+    $(".auto_causas").text(''); 
+  e.preventDefault();
+  });
+  $("body").on("click","#select2-tipo_proceso-container", function(e){
+    $(".auto_causas").select2('destroy');
+    $(".auto_causas").text('');
+  e.preventDefault();
+  });
+
+
+
+});
 

@@ -46,7 +46,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script language="javascript">
+<!--<script language="javascript">
 $(document).ready(function(){
    $("#marca").change(function () {
            $("#marca option:selected").each(function () {
@@ -57,7 +57,7 @@ $(document).ready(function(){
         });
    })
 });
-</script>
+</script>-->
 
 
 
