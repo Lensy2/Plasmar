@@ -10,7 +10,12 @@ if (isset($_SESSION['usuario'])) {
   include '../includes/fotomulta/header.php';
   include '../model/fotomulta.php';
 ?>
-
+<style type="text/css" media="screen">
+  .error{
+     border: 1px solid rgba(215, 0, 0, 0.75);
+     box-shadow:inset 0px 0px 2px 0px rgba(255, 0, 0, 0.75); 
+  } 
+  </style>
     <!-- =============================================== -->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -32,8 +37,8 @@ if (isset($_SESSION['usuario'])) {
           <!-- Default box -->
           	<div class="box">
 	            <div class="box-header with-border">
-          <h3 class="box-title"><i class="fa fa-fw fa-plus-circle"></i>Nueva - Foto Multa</h3>
-        </div><!-- /.box-header -->
+                <h3 class="box-title"><i class="fa fa-fw fa-plus-circle"></i>Nueva - Foto Multa</h3>
+              </div><!-- /.box-header -->
 	            <div class="box-body">
 	  				<form id="frmInc" action="procesar_fotomulta.php" method="post" accept-charset="utf-8">
         <div class="modal-body">        
@@ -53,42 +58,70 @@ if (isset($_SESSION['usuario'])) {
             <select class="auto_procesos form-control" id="tipo_proceso" name="tipo_proceso" required></select>
 
              <label>Causa:</label>
-            <select class="auto_causas form-control" name="causa"></select> 
+            <select class="auto_causas form-control" name="causa" id="causa" required></select> 
 
-            <label>Pedido #</label>
-            <input type="number" step="any" class="form-control" name="pedido" id="pedido">
-            <label>Cliente</label>
-            <input id="comp-cliente" type="text" class="form-control" name="nom_cliente">
-            <label>Descripción</label>
-            <input type="text" class="form-control" name="descripcion" id="descripcion">
-            <label>Referencia</label>
-            <input type="number" step="any" class="form-control" name="referencia" id="referencia">
-            <label>Rollo N°</label>
-            <input type="number" step="any" class="form-control" name="num_rollo" id="num_rollo">
-            <label>Maquina(#):</label>
-            <input type="number" step="any" class="form-control" name="maquina">
-            <label>Cantidad(Kg)</label>
-            <input type="number" step="any" class="form-control" name="cantidad" id="cantidad">
-            <label>Detectada por</label>
-            <input  type="text" class="form-control" name="detectada_por" value="<?php echo $_SESSION["nombreuser"]; ?>" readonly>
-             <label>Empleado responsable:</label>
+            <label id="lbl_pedido">Pedido #</label>
+            <input type="number" step="any" class="form-control" name="pedido" id="pedido" required>
+
+            <label id="lbl_cliente">Cliente</label>
+            <input id="comp-cliente" type="text" class="form-control" name="nom_cliente" required>
+
+            <label id="lbl_descripcion">Descripción</label>
+            <input type="text" class="form-control" name="descripcion" id="descripcion" required>
+
+            <label id="lbl_referencia">Referencia</label>
+            <input type="number" step="any" class="form-control" name="referencia" id="referencia" required>
+
+            <label id="lbl_num_rollo">Rollo N°</label>
+            <input type="number" step="any" class="form-control" name="num_rollo" id="num_rollo" required>
+
+            <label id="lbl_maquina">Maquina(#):</label>
+            <input type="number" step="any" class="form-control" name="maquina" id="maquina" required>
+
+            <label id="lbl_cantidad">Cantidad(Kg)</label>
+            <input type="number" step="any" class="form-control" name="cantidad" id="cantidad" required>
+
+            <label id="lbl_detectada_por">Detectada por</label>
+            <input  type="text" class="form-control" name="detectada_por" value="<?php echo $_SESSION["nombreuser"]; ?>" id="detectada_por" readonly>
+
+             <label id="lbl_operarios">Empleado responsable:</label>
                     <i id="limpiar" style="cursor: pointer;" class="fa fa-times"></i>
                      <br>
                      <input id="operarios" type="text" class="form-control" placeholder="Nombre empleado" name="op_res" required>
-            <label>Area</label>
-            <input class="form-control" id="area" name="area">
+
+            <label id="lbl_area">Area</label>
+            <input class="form-control" id="area" name="area" required>
             <!--<label>Causa:</label>
             <textarea id="causas-general" class="form-control" style="max-width: 100%;" name="causa"></textarea>-->
                              
            
-            <label>Descripción:</label>
-            <textarea class="form-control" style="max-width: 100%;" name="descripcion_inc"></textarea>
-            <label>Disposición final</label>
-              <select class="form-control" name="dispo_final" id="dispo_final">
+            <label id="lbl_descripcion_inc">Descripción:</label>
+            <textarea class="form-control" style="max-width: 100%;" name="descripcion_inc" id="descripcion_inc" required></textarea>
+
+            <label id="lbl_dispo_final">Disposición final</label>
+              <select class="form-control" name="dispo_final" id="dispo_final" required>
                 <option value="DESECHAR">DESECHAR</option>
                 <option value="CONCESION">CONCESION</option>
                 <option value="REPROCESO">RE-PROCESO</option>
               </select>
+              <br>
+
+            <!-- Sistema afectado-->
+            <div class="row">
+              <div class="col-xs-6 col-md-3">
+                <div class="panel panel-primary">
+                  <div class="panel-body">
+                     <label><input type="checkbox" name="chkSistema[]" value="Calidad"> Calidad</label><br>
+                     <label><input type="checkbox" name="chkSistema[]" value="Ambiental"> Ambiental</label><br>
+                     <label><input type="checkbox" name="chkSistema[]" value="Inocuidad"> Inocuidad</label><br>
+                     <label><input type="checkbox" name="chkSistema[]" value="SST"> SST</label><br>
+                     <label><input type="checkbox" name="chkSistema[]" value="Otro"> Otro</label>
+                  </div>
+                  <div class="panel-footer"><label>Sistema Afectado</label></div>
+                </div>
+              </div>
+            </div>
+
             <h4 align="center"><b>Adjuntar evidencia</b></h4>
             <!--<input type="file" name="files[]" accept="image/*"  multiple/> -->
             <input id="archivos" name="imagenes[]" type="file" accept="image/*" multiple=true >
@@ -105,6 +138,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
 
         </form>
+        <input  type="submit" class="btn btn-primary" id="Agregar" name="inc-guardar" value="Guardar">   
 				</div><!-- /.box-body -->
 			</div><!-- /.box -->
 		</section><!-- /.content -->
