@@ -31,7 +31,6 @@ if (isset($_SESSION['usuario'])) {
 
         <!-- Main content -->
         <section class="content">
-
           <!-- Default box -->
           <div class="box">
             <div class="box-header">

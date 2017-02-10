@@ -14,6 +14,15 @@
     <script src="<?php echo $enlace;?>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="<?php echo $enlace;?>/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo $enlace;?>/jquery-ui/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript">
+        $('#fecha_fotomulta').datetimepicker({
+            dateFormat: "dd-mm-yy"
+        });
+
+
+    </script>
+    
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -49,6 +58,8 @@
     <script src="<?php echo $enlace;?>/plugins/iCheck/icheck.min.js"></script>
        <!--- FileInput - Subir Imagenes--> 
     <script src="<?php echo $enlace;?>/plugins/fileInput/js/fileinput.min.js" type="text/javascript"></script>
+      <!--- Sweeralert --> 
+    <script src="<?php echo $enlace;?>/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
     <!-- AdminLTE App -->
     <script src="<?php echo $enlace;?>/dist/js/app.min.js"></script>

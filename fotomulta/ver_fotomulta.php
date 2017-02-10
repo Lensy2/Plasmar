@@ -52,6 +52,7 @@ $numElementosReal = $numElementos - 1;
              <table class="table table-striped" >
                     <tbody>
                       <tr>
+                      <th>Fecha de fotomulta</th>
                         <th>Pedido #</th>
                         <th>Rollo</th>
                         <th>Cliente</th>
@@ -59,6 +60,7 @@ $numElementosReal = $numElementos - 1;
                         <th>Referencia</th>
                       </tr>
                       <tr>
+                      <td><?php echo  date_format($fila->fecha_fotomulta,'d:m:Y h:m') ?></td> 
                         <td><?php echo "<span class='label label-primary' style='font-size:13px'>".$fila->num_orden."</span>" ?></td>
                         <td><?php echo $fila->num_rollo ?></td> 
                         <td><?php echo $fila->cliente ?></td>  
@@ -77,20 +79,20 @@ $numElementosReal = $numElementos - 1;
                         <th>Maquina</th>
                         <th >Cantidad KG</th>
                         <th >Detectada por</th>
-                        <th >Cargo</th>
                         <th>Causa</th>
-                        <th>Operario responsable</th>
+                        <th>Empleado responsable</th>
+                        <th>Area</th>
                         <th>Descripcion Inconformidad</th>
                       </tr>
                       <tr>
-                        <?php if ($fila->tipo_inconf == 'NO CONFORME'){echo "<td><span class='label label-danger'>NO CONFORME</span></td>";}elseif($fila->tipo_inconf == 'EN TRANSITO'){echo "<td><span class='label label-warning'>EN TRANSITO</span></td>";}elseif ($fila->tipo_inconf == 'NO INOCUO') {echo "<td><span class='label label-danger'>NO INOCUO</span></td>";} ?>
+                        <?php if ($fila->tipo_inconf == 'NO CONFORME'){echo "<td><span class='label label-danger'>NO CONFORME</span></td>";}elseif($fila->tipo_inconf == 'EN TRANSITO'){echo "<td><span class='label label-warning'>EN TRANSITO</span></td>";}elseif ($fila->tipo_inconf == 'INCUMPLIMIENTO AL S.G.I') {echo "<td><span class='label label-danger'>INCUMPLIMIENTO AL S.G.I</span></td>";} ?>
                         <td><?php echo $fila->tipo_proceso ?></td>
                         <td><?php echo $fila->maquina ?></td>
                         <td><?php echo $fila->cantidad ?></td>
                         <td><?php echo $fila->detectada_por ?></td> 
-                        <td><?php echo $fila->cargo ?></td> 
                         <td><?php echo $fila->causa ?></td>  
-                        <td><?php echo $fila->operario_res ?></td>  
+                        <td><?php echo $fila->operario_res ?></td> 
+                        <td><?php echo $fila->area ?></td>  
                         <td><?php echo $fila->descripcion_inc ?></td>   
                       </tr>
                       
@@ -109,9 +111,9 @@ $numElementosReal = $numElementos - 1;
                     </tbody>
                   </table>
                   <?php            
-               for($i=0; $i<$numElementosReal; $i++){
+               for($i=0; $i<=$numElementosReal; $i++){
                 //saco el valor de cada elemento
-                echo "<a href='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$separarFotos[$i].jpg' target='blank'><img width='200px' src='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$separarFotos[$i].jpg' /></a>" ;
+                echo "<a href='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$separarFotos[$i]' target='blank'><img width='200px' src='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$separarFotos[$i]' /></a>" ;
                 echo "<br>";
               }      
            

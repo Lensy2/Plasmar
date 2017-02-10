@@ -38,6 +38,8 @@
  <link rel="stylesheet" href="<?php echo $enlace;?>/jquery-ui/jquery-ui.css">
  <!--- FileInput - Subir Imagenes--> 
     <link href="<?php echo $enlace;?>/plugins/fileInput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <!--- Sweeralert--> 
+    <link href="<?php echo $enlace;?>/plugins/sweetalert/sweetalert.css" media="all" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +48,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script language="javascript">
+<!--<script language="javascript">
 $(document).ready(function(){
    $("#marca").change(function () {
            $("#marca option:selected").each(function () {
@@ -57,7 +59,7 @@ $(document).ready(function(){
         });
    })
 });
-</script>
+</script>-->
 
 
 
