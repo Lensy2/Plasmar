@@ -183,8 +183,14 @@ $(function () {
           },
           minimumInputLength: 0
       });
-    }else{
-      alert('Por favor llene los campos')
+    }else{     
+      swal({
+        title: "Aviso",
+        text: "¡Son requeridos los campos <b>Tipo de Inconformidad</b> y <b>Tipo de Proceso</b>!",
+        type: "warning",
+        html: true,
+        confirmButtonText: "Cerrar"
+      });
     }
     e.preventDefault();
   });
@@ -301,7 +307,6 @@ function comprobarCamposFotoMulta(inconformidad) {
 
   switch(inconformidad) {
     case 'INCUMPLIMIENTO AL S.G.I':
-      var correcto;
       //Listas desplegables
       var selectTipo_inconf=$('#tipo_inconf:required');
       var selectTipo_proceso=$('#tipo_proceso:required');
@@ -311,20 +316,29 @@ function comprobarCamposFotoMulta(inconformidad) {
       var campoArea = $('#area:required');
       var campoDescripcion_2 = $('#descripcion_inc:required');
 
-      correcto = validarCampoSelect(selectTipo_inconf);
-      correcto = validarCampoSelect(selectTipo_proceso);
-      correcto = validarCampoSelect(selectCausa);
+      var estado1 = validarCampoSelect(selectTipo_inconf);
+      var estado2 = validarCampoSelect(selectTipo_proceso);
+      var estado3 = validarCampoSelect(selectCausa);
 
-      correcto = validarCampoTexto(campoEmpleado_res);
+      var estado4 = validarCampoTexto(campoEmpleado_res);
       $(campoEmpleado_res).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoArea);
+      var estado5 = validarCampoTexto(campoArea);
       $(campoArea).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoDescripcion_2);
+      var estado6 = validarCampoTexto(campoDescripcion_2);
       $(campoDescripcion_2).click(function(){$(this).removeClass('error');});
 
-    return correcto;
+      var arrayEstados = [estado1, estado2, estado3, estado4, estado5, estado6];
+      var correcto;
+
+      if($.inArray(false, arrayEstados) !== -1){
+        correcto = false;
+      }else{
+        correcto = true;
+      }
+
+      return correcto;
         break;
 
     default:
@@ -348,52 +362,60 @@ function comprobarCamposFotoMulta(inconformidad) {
       var campoArea            = $('#area:required');
       var campoDescripcion_2   = $('#descripcion_inc:required');
 
-      correcto = validarCampoSelect(selectTipo_inconf);
-      correcto = validarCampoSelect(selectTipo_proceso);
-      correcto = validarCampoSelect(selectCausa);
-      correcto = validarCampoSelect(selectDispo_final);
+      var estado1 = validarCampoSelect(selectTipo_inconf);
+      var estado2= validarCampoSelect(selectTipo_proceso);
+      var estado3 = validarCampoSelect(selectCausa);
+      var estado4 = validarCampoSelect(selectDispo_final);
 
-      correcto = validarCampoTexto(campoPedido);
+      var estado5 = validarCampoTexto(campoPedido);
       $(campoPedido).click(function(){ $(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoCliente);
+      var estado6 = validarCampoTexto(campoCliente);
       $(campoCliente).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoDescripcion_1);
+      var estado7 = validarCampoTexto(campoDescripcion_1);
       $(campoDescripcion_1).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoReferencia);
+      var estado8 = validarCampoTexto(campoReferencia);
       $(campoReferencia).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoNum_rollo);
+      var estado9 = validarCampoTexto(campoNum_rollo);
       $(campoNum_rollo).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoMaquina);
+      var estado10 = validarCampoTexto(campoMaquina);
       $(campoMaquina).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoCantidad);
+      var estado11 = validarCampoTexto(campoCantidad);
       $(campoCantidad).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoEmpleado_res);
+      var estado12 = validarCampoTexto(campoEmpleado_res);
       $(campoEmpleado_res).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoArea);
+      var estado13 = validarCampoTexto(campoArea);
       $(campoArea).click(function(){$(this).removeClass('error');});
 
-      correcto = validarCampoTexto(campoDescripcion_2);
+      var estado14 = validarCampoTexto(campoDescripcion_2);
       $(campoDescripcion_2).click(function(){$(this).removeClass('error');});
+
+      var arrayEstados = [estado1, estado2, estado3, estado4, estado5, estado6, estado7, estado8, estado9, estado10, estado11, estado12, estado13, estado14];
+      var correcto;
+
+      if($.inArray(false, arrayEstados) !== -1){
+        correcto = false;
+      }else{
+        correcto = true;
+      }
+
+      return correcto;
   }
 
 }
-
 /*
-*Funcion para almacenar la fotomulta
+*Funcion construir el array de datos completo de una foto multa segun su tipo de
+*inconformidad
 */
-/*
-function comprobarCamposFotoMulta(inconformidad) {
-
+function arrayDatosFotoMulta(inconformidad) {
   if (inconformidad == 'INCUMPLIMIENTO AL S.G.I') {
-    alert('Campos para INCUMPLIMIENTO AL S.G.I');
     var txtFecha_fotomulta = $('#fecha_fotomulta').val();
     if (txtFecha_fotomulta == '') {
       //07-02-2017 11:55
@@ -413,24 +435,47 @@ function comprobarCamposFotoMulta(inconformidad) {
     } 
     var txtTipo_inconf     = $('#tipo_inconf :selected').text();
     var txtTipo_proceso    = $('#tipo_proceso :selected').text();
-    var txtCausa           = $('#causa :selected').text();
+    var txtCausa           = $('#causa :selected').text();    
+    var txtDetectada_por   = $('#detectada_por').val();
     var txtEmpleado_res    = $('#operarios').val();
     var txtArea            = $('#area').val();
     var txtDescripcion_2   = $('#descripcion_inc').val();
-    var txtSistema_Afect   = $("input[name='chkSistema\\[\\]']").map(function(){return $(this).val();}).get();
+    var txtSistema_Afect   = $("input[name='chkSistema\\[\\]']:checked").map(function(){return $(this).val();}).get();
     var txtFoto_evidencia  = $('#cadenalista').val();
-    var datosFotoMulta = 'fecha_fotomulta='+txtFecha_fotomulta; 
+    var txtId_usuario = $('#id_usuario').val();
+    var datos;
 
+    if (txtFoto_evidencia == '') {
+      datos = 'Fecha_foto='+txtFecha_fotomulta+'&Tipo_inconf='+txtTipo_inconf+'&Tipo_proceso='+txtTipo_proceso+'&Causa='+txtCausa+'&Detectada_por='+txtDetectada_por+'&Empleado_res='+txtEmpleado_res+'&Area='+txtArea+'&Descripcion_2='+txtDescripcion_2+'&Sistema_Afect='+txtSistema_Afect+'&Foto_evidencia=null.png'+'&id_usuario='+txtId_usuario;
+    }else{
+      datos = 'Fecha_foto='+txtFecha_fotomulta+'&Tipo_inconf='+txtTipo_inconf+'&Tipo_proceso='+txtTipo_proceso+'&Causa='+txtCausa+'&Detectada_por='+txtDetectada_por+'&Empleado_res='+txtEmpleado_res+'&Area='+txtArea+'&Descripcion_2='+txtDescripcion_2+'&Sistema_Afect='+txtSistema_Afect+'&Foto_evidencia='+txtFoto_evidencia+'&id_usuario='+txtId_usuario;
+    }
+    return datos;
 
-    alert(datosFotoMulta);
 
   }else{
-    alert('Campos normales')
-    /*
-    var txtFecha_fotomulta = $('#fecha_fotomulta').val();
+    //Traer los datos de los campos cuando el tipo de inconformida no es Incumplimiento al S.G.I  
+   var txtFecha_fotomulta = $('#fecha_fotomulta').val();
+    if (txtFecha_fotomulta == '') {
+      //07-02-2017 11:55
+      //dd-mm-yyy
+      var fecha = new Date();
+      var dia = fecha.getDate();
+      if(dia<10) {dia='0'+dia}
+      var mes = fecha.getMonth()+1;
+      if(mes<10) {mes='0'+mes}
+      var ano = fecha.getFullYear();
+      var hr = fecha.getHours();
+      if(hr<10) {hr='0'+hr}
+      var min = fecha.getMinutes();
+      if(min<10) {min='0'+min}
+      
+      var txtFecha_fotomulta = dia+'-'+mes+'-'+ano+' '+hr+':'+min;
+    }
     var txtTipo_inconf     = $('#tipo_inconf :selected').text();
     var txtTipo_proceso    = $('#tipo_proceso :selected').text();
     var txtCausa           = $('#causa :selected').text();
+
     var txtPedido          = $('#pedido').val();
     var txtCliente         = $('#comp-cliente').val();
     var txtDescripcion_1   = $('#descripcion').val();
@@ -440,28 +485,126 @@ function comprobarCamposFotoMulta(inconformidad) {
     var txtCantidad        = $('#cantidad').val();
     var txtDetectada_por   = $('#detectada_por').val();
     var txtEmpleado_res    = $('#operarios').val();
+    var txtDispo_final     = $('#dispo_final').val();
+
     var txtArea            = $('#area').val();
     var txtDescripcion_2   = $('#descripcion_inc').val();
-    var txtDispo_final     = $('#dispo_final').val();
-    var txtSistema_Afect   = $("input[name='chkSistema\\[\\]']").map(function(){return $(this).val();}).get();
+    var txtSistema_Afect   = $("input[name='chkSistema\\[\\]']:checked").map(function(){return $(this).val();}).get();
     var txtFoto_evidencia  = $('#cadenalista').val();
+    var txtId_usuario = $('#id_usuario').val();
+    var datos;
+    
+    if (txtFoto_evidencia == '') {
+      datos = 'Fecha_foto='+txtFecha_fotomulta+'&Tipo_inconf='+txtTipo_inconf+'&Tipo_proceso='+txtTipo_proceso+'&Causa='+txtCausa+'&Pedido='+txtPedido+'&Cliente='+txtCliente+'&Descripcion_1='+txtDescripcion_1+'&Referencia='+txtReferencia+'&Num_rollo='+txtNum_rollo+'&Maquina='+txtMaquina+'&Cantidad='+txtCantidad+'&Detectada_por='+txtDetectada_por+'&Empleado_res='+txtEmpleado_res+'&Dispo_final='+txtDispo_final+'&Area='+txtArea+'&Descripcion_2='+txtDescripcion_2+'&Sistema_Afect='+txtSistema_Afect+'&Foto_evidencia=null.png'+'&id_usuario='+txtId_usuario;
+    }else{
+      datos = 'Fecha_foto='+txtFecha_fotomulta+'&Tipo_inconf='+txtTipo_inconf+'&Tipo_proceso='+txtTipo_proceso+'&Causa='+txtCausa+'&Pedido='+txtPedido+'&Cliente='+txtCliente+'&Descripcion_1='+txtDescripcion_1+'&Referencia='+txtReferencia+'&Num_rollo='+txtNum_rollo+'&Maquina='+txtMaquina+'&Cantidad='+txtCantidad+'&Detectada_por='+txtDetectada_por+'&Empleado_res='+txtEmpleado_res+'&Dispo_final='+txtDispo_final+'&Area='+txtArea+'&Descripcion_2='+txtDescripcion_2+'&Sistema_Afect='+txtSistema_Afect+'&Foto_evidencia='+txtFoto_evidencia+'&id_usuario='+txtId_usuario;
+    }
+
+    return datos;   
+  }
+}
+/*
+*Transaccion ajax para almacenar foto multa
+*/
+function ajaxGuardarFotoMulta(array,tipo_inc) {
+
+  switch(tipo_inc) {
+    case 'INCUMPLIMIENTO AL S.G.I':
+      $.ajax({
+        type: "POST",
+        url: "insert.php",
+        data: array,
+        cache: false,
+        success: function (res, status) {
+          if (res == 'ok') {
+             swal({
+                title: "¡Foto Multa Agregada!",
+                text: "",
+                type: "success",
+                timer: 1000,
+                showConfirmButton: false,
+              },
+              function(){
+                  window.location.href = 'foto_multas.php';          
+              });
+          }
+           
+        },
+        error: function(result, status, error){
+          console.log(err)
+        }
+      });
+     break;
+    default:
+    /*Guardar para los otros tipo de inconformidad*/
+      $.ajax({
+        type: "POST",
+        url: "insert.php",
+        data: array,
+        cache: false,
+        success: function (res, status) {
+            if (res == 'ok') {
+             swal({
+                title: "¡Foto Multa Agregada!",
+                text: "",
+                type: "success",
+                timer: 1000,
+                showConfirmButton: false,
+              },
+              function(){
+                  window.location.href = 'foto_multas.php';          
+              });
+          }
+        },
+        error: function(result, status, error){
+          console.log(err)
+        }
+      });     
   }
   
 }
-*/
-$("body").on("click","#Agregar", function(e){
 
-  alert('Guardando..');
-  var txtTipo_inconf = $('#tipo_inconf :selected').text();
-  var resValidacion = comprobarCamposFotoMulta(txtTipo_inconf);
-  
-  if (resValidacion) {
-    alert('Get datos de campos...');
-    //Metodo para almacenar los valores de los campos de fotomulta
-  }else{
-    alert('Campos vacios');
-  }
-  e.preventDefault();
+  $("body").on("click","#inc-guar", function(e){
+
+    var txtTipo_inconf = $('#tipo_inconf :selected').text();
+    var txtFoto_evidencia  = $('#cadenalista').val();
+
+    var resValidacion = comprobarCamposFotoMulta(txtTipo_inconf);
+    if (resValidacion) {
+
+      if (txtFoto_evidencia == '') {
+        swal({
+          title: "¿Estás seguro?",
+          text: "Aun no ha adjuntado ninguna foto, ¿desea hacerlo?",
+          type: "info",
+          showCancelButton: true,
+          confirmButtonText: "Si",
+          cancelButtonText: "No",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        },
+        function(isConfirm){
+          if (isConfirm) {
+            $('#lbl_adjuntar').focus();
+          } else {
+            var datosFotoMulta = arrayDatosFotoMulta(txtTipo_inconf);      
+            ajaxGuardarFotoMulta(datosFotoMulta,txtTipo_inconf);
+          }
+        });
+      }else{
+        var datosFotoMulta = arrayDatosFotoMulta(txtTipo_inconf);      
+        ajaxGuardarFotoMulta(datosFotoMulta,txtTipo_inconf);
+      }
+      //Metodo para almacenar los valores de los campos de fotomulta
+    }else{
+      swal({
+        title: "Aviso",
+        text: "¡Por favor diligencie todos los campos requeridos!",
+        type: "warning",
+        confirmButtonText: "Cerrar"
+      });
+    }
+    e.preventDefault();
   });
 });
 

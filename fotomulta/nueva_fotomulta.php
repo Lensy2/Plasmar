@@ -40,9 +40,11 @@ if (isset($_SESSION['usuario'])) {
                 <h3 class="box-title"><i class="fa fa-fw fa-plus-circle"></i>Nueva - Foto Multa</h3>
               </div><!-- /.box-header -->
 	            <div class="box-body">
-	  				<form id="frmInc" action="procesar_fotomulta.php" method="post" accept-charset="utf-8">
+	  				<!--<form id="frmInc" action="procesar_fotomulta.php" method="post" accept-charset="utf-8">-->
         <div class="modal-body">        
           <h4 align="center"><b>Formulario - Foto Multa</b></h4>
+          <!-- ID usuario -->
+          <input type="hidden" id="id_usuario" value="<?php echo $_SESSION['idusuario'] ?>">          
             <label>Fecha de foto multa</label>
             <div class="input-group date">
                 <input type="text" data-format="dd/MM/yyyy hh:mm:ss" class="form-control" id="fecha_fotomulta" name="fecha_fotomulta">
@@ -122,7 +124,7 @@ if (isset($_SESSION['usuario'])) {
               </div>
             </div>
 
-            <h4 align="center"><b>Adjuntar evidencia</b></h4>
+            <h4 align="center" id="lbl_adjuntar"><b>Adjuntar evidencia</b></h4>
             <!--<input type="file" name="files[]" accept="image/*"  multiple/> -->
             <input id="archivos" name="imagenes[]" type="file" accept="image/*" multiple=true >
             <input id="cadenalista" type="hidden" name="evidencia">         
@@ -137,8 +139,8 @@ if (isset($_SESSION['usuario'])) {
           <input  type="submit" class="btn btn-primary" id="inc-guar" name="inc-guardar" value="Guardar">   
         </div>
 
-        </form>
-        <input  type="submit" class="btn btn-primary" id="Agregar" name="inc-guardar" value="Guardar">   
+        <!--</form>-->
+         
 				</div><!-- /.box-body -->
 			</div><!-- /.box -->
 		</section><!-- /.content -->

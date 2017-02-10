@@ -58,6 +58,8 @@
     <script src="<?php echo $enlace;?>/plugins/iCheck/icheck.min.js"></script>
        <!--- FileInput - Subir Imagenes--> 
     <script src="<?php echo $enlace;?>/plugins/fileInput/js/fileinput.min.js" type="text/javascript"></script>
+      <!--- Sweeralert --> 
+    <script src="<?php echo $enlace;?>/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
     <!-- AdminLTE App -->
     <script src="<?php echo $enlace;?>/dist/js/app.min.js"></script>
