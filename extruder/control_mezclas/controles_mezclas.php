@@ -9,10 +9,12 @@ if (isset($_SESSION['usuario'])) {
   
   include '../../includes/funciones.php';
   $enlace = rutaRecursos('segundo_nivel');
-
   include '../../includes/dbconfig.php';
   include '../../includes/extruder/header.php';
   include '../../model/extruder.php';
+  require_once '../../class/Extrusion.php';
+
+ 
 ?>
       <!-- =============================================== -->
       <!-- Content Wrapper. Contains page content -->
@@ -51,7 +53,8 @@ if (isset($_SESSION['usuario'])) {
             <th>Tipo de Extrusion</th>
             <th>Usuario</th>
             <th>Operario responsable</th>
-            <th>Mezcla #</th>            
+            <th>Mezcla #</th> 
+            <th>Observación</th>           
             <th>Estado</th>
             <th>Accion</th>
             <th>Ver</th>
@@ -68,12 +71,17 @@ while($fila = sqlsrv_fetch_object($registros))
     echo "<td>".$fila->nombre." ".$fila->apellido. "</td>";
     echo "<td>".$fila->operario_res."</td>";
     echo "<td>".$fila->num_mezcla."</td>";
+    /*Buscar descripcion de acuerdo al tipo de extrusion*/
+    $ext = new Extrusion();
+    $obs = $ext->getDescripciones($fila->num_orden, $fila->tipo_ext);
+    echo "<td>".$obs."</td>";
+
     echo "<td><span class='label label-warning'>".$fila->estado."</span></td>";
     echo "<td><i class='fa fa-fw fa-edit'></i><a href='editar_control_mezcla.php?id=$fila->Idcontrol_mezcla&pedido=$fila->num_orden&tipo_ext=$fila->tipo_ext&num_mezcla=$fila->num_mezcla'>Editar</a></td>";
     echo "<td><i class='fa fa-fw fa-eye'></i><a href='detalles.php?pedido=$fila->num_orden & tipo_ext=$fila->tipo_ext'>Detalles</a></td>";
   echo "</tr>";
 }
-sqlsrv_close($connSCPBD);
+//sqlsrv_close($connSCPBD);
 ?>
 
     </tbody>

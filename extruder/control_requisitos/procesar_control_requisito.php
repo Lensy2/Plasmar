@@ -24,6 +24,10 @@ if (isset($_SESSION['usuario'])) {
 	$fecha = gmdate("d/m/Y g:i:s A", time()-($ms));
 	
 	$op_res = $_POST['op_res'];
+	$ancho = $_POST['ancho'];
+	$calibre = $_POST['calibre'];
+	$peso_m = $_POST['peso_m'];
+
 	$iduser = $_SESSION['idusuario'];
 	$requisitos = '';
 
@@ -36,7 +40,7 @@ if (isset($_SESSION['usuario'])) {
 
 	echo "</br>";
 	//$cadena = "INSERT INTO libros SET Titulo='$titulo', Precio='$precio', Formatos='$formatos'";
-	$cadena = "INSERT INTO control_requisitos (num_orden,tipo_ext,operario_res,requisitos,fecha,estado,num_mezcla,Idusuario) VALUES ($pedido,'$tipo_ext','$op_res','$requisitos','$fecha','$estado',$num_mezcla,'$iduser');";
+	$cadena = "INSERT INTO control_requisitos (num_orden,tipo_ext,operario_res,requisitos,fecha,estado,num_mezcla,Idusuario,ancho,calibre,peso_m) VALUES ($pedido,'$tipo_ext','$op_res','$requisitos','$fecha','$estado',$num_mezcla,'$iduser','$ancho','$calibre','$peso_m');";
 	echo $cadena;	
 	sqlsrv_query($connSCPBD, $cadena);	
 	sqlsrv_close( $connSCPBD );

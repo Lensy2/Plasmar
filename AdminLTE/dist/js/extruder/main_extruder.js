@@ -83,7 +83,7 @@ $(function(){
 
     //Funcionalidad de Control de Requisitos - Checkbox
     $('#chk1,#chk2,#chk3,#chk4,#chk5,#chk7,#chk6,#chk8,#chk9,#chk10,#chk11,#chk12,#chk13,#chk14').click(function() {
-        if ($('#chk1:checked,#chk2:checked,#chk3:checked,#chk4:checked,#chk5:checked,#chk6:checked,#chk7:checked,#chk8:checked,#chk9:checked,#chk10:checked,#chk11:checked,#chk12:checked,#chk13:checked,#chk14:checked').length == 14)
+        if ($('#chk1:checked,#chk2:checked,#chk3:checked,#chk4:checked,#chk5:checked,#chk6:checked,#chk7:checked,#chk8:checked,#chk9:checked,#chk10:checked,#chk11:checked,#chk12:checked,#chk13:checked,#chk14:checked,#chk15:checked,#chk16:checked,#chk17:checked').length == 14)
             $('#chkrequisitos').removeAttr('disabled');
         else
             $('#chkrequisitos').attr('disabled', 'disabled');
