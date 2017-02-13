@@ -311,7 +311,7 @@ $idmezcla = $_GET['id'];
                             </ul>
 
                             <!-- ////// Inicio - formulario que contiene todos los parametros que se van a enviar ///////-->
-                            <form action="actualizar_control_mezcla.php" method="post" accept-charset="utf-8">
+                            <form action="actualizar_control_mezcla.php" method="post" accept-charset="utf-8" id="form-mezcla">
                                 <!-- Id del control de mezcla oculto -->
                                 <input type="hidden" name="idcontrol_m" value="<?php echo $datosTor1[6];?>">
                                 <!-- Numero de mezcla a editar -->
@@ -1070,7 +1070,6 @@ $idmezcla = $_GET['id'];
                                 </div>
                             </div>
                         </form>                 
-               
             </div><!-- /.box-body -->
           </div><!-- /.box -->
 

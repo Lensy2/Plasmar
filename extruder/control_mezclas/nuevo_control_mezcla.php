@@ -251,7 +251,7 @@ $fila = sqlsrv_fetch_object($registrosExt);
                             </ul>
 
                             <!-- ////// Inicio - formulario que contiene todos los parametros que se van a enviar ///////-->
-                            <form action="procesar_contr_mezcla.php" method="post" accept-charset="utf-8">
+                            <form action="procesar_contr_mezcla.php" method="post" accept-charset="utf-8" id="form-mezcla" >
 
                                 <!-- Variable oculta: Numero de Orden -->
                                 <input type="hidden" name="num_orden" value="<?php echo $pedido; ?>">
@@ -999,7 +999,7 @@ $fila = sqlsrv_fetch_object($registrosExt);
 
 <!-- =============================================== -->
 <?php
-    sqlsrv_close( $connPlas );
+ sqlsrv_close( $connPlas );
 ?> 
 
 <?php include '../../includes/extruder/footer.php'; 

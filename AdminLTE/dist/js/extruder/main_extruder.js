@@ -152,7 +152,139 @@ $(function(){
         $("#cadenalista").val(nuevaCadena); 
         console.log('Files selected - ' + fstack.length);
     });
+
+/*
+*Metodo para validar los componentes de los tornillos de una mezcla
+*/
+function camprobarComponentes(comp,kg,lote) {
+  for (i = 0; i < comp.length; i++) {
+          var compValA = comp[i];
+          var kgValA = kg[i];
+          var ltValA = lote[i];
+          var fallo;
+          var estado;
+          //Componente: lleno ; kg: igual a .00 ; lote: vacio
+          if (compValA != '' && kgValA == '.00' && ltValA == '') {
+            fallo = 0;
+          }
+          //Componente: lleno ; kg: diferente a .00 ; lote: vacio
+          else if (compValA != '' && kgValA != '.00' && ltValA == '') {
+            fallo = 0;
+          }
+
+          //Componente: vacio ; kg: igual a .00 ; lote: lleno
+          else if (compValA == '' && kgValA == '.00' && ltValA != '') {
+            fallo = 0;
+          }
+
+          //Componente: vacio ; kg: diferente a .00 ; lote: lleno
+          else if (compValA == '' && kgValA != '.00' && ltValA != '') {
+            fallo = 0;
+          }
+
+          //Componente: lleno ; kg: vacio ; lote: lleno
+          else if (compValA != '' && kgValA == '' && ltValA != '') {
+            fallo = 0;
+          }
+
+          //Componente: lleno ;  kg: igual a .00 ; lote: lleno
+          else if (compValA != '' && kgValA == '.00' && ltValA != '') {
+            fallo = 0;
+          }
+
+          //Componente: vacio ;  kg: igual a .00 ; lote: vacio
+          else if (compValA == '' && kgValA != '.00' && ltValA == '') {
+            fallo = 0;
+          }
+      }
+      if (fallo == 0) {
+        estado = 0;
+        return estado;
+
+      }else{
+        estado = 1;
+        return estado;
+      }
+}
+
+/*
+*Metodo para validar el ingreso correcto de los componentes en un control de mezcla
+*/
+  function comprobacionCompleta() {
+       // body...
+   
+    /* Act on the event */
+    //Tornillo 1
+    var comp_A = $("input[name='comp_A\\[\\]']").map(function(){return $(this).val();}).get();
+    var kg_A = $("input[name='kg_A\\[\\]']").map(function(){return $(this).val();}).get();
+    var lote_A = $("input[name='lote_A\\[\\]']").map(function(){return $(this).val();}).get();
+    //Comprobracion de campos
+    var comprobacionTor1 = camprobarComponentes(comp_A,kg_A,lote_A);
+
+    //Tornillo 2
+    var comp_B = $("input[name='comp_B\\[\\]']").map(function(){return $(this).val();}).get();
+    var kg_B = $("input[name='kg_B\\[\\]']").map(function(){return $(this).val();}).get();
+    var lote_B = $("input[name='lote_B\\[\\]']").map(function(){return $(this).val();}).get();
+    //Comprobacion de campos
+    var comprobacionTor2 = camprobarComponentes(comp_B,kg_B,lote_B);
+
+    //Tornillo 3
+    var comp_C = $("input[name='comp_C\\[\\]']").map(function(){return $(this).val();}).get();
+    var kg_C = $("input[name='kg_C\\[\\]']").map(function(){return $(this).val();}).get();
+    var lote_C = $("input[name='lote_C\\[\\]']").map(function(){return $(this).val();}).get();
+    //Comprobacion de campos
+    var comprobacionTor3 = camprobarComponentes(comp_C,kg_C,lote_C);
+
+    //Tornillo 4
+    var comp_D = $("input[name='comp_D\\[\\]']").map(function(){return $(this).val();}).get();
+    var kg_D = $("input[name='kg_D\\[\\]']").map(function(){return $(this).val();}).get();
+    var lote_D = $("input[name='lote_D\\[\\]']").map(function(){return $(this).val();}).get();
+    //Comprobacion de campos
+    var comprobacionTor4 = camprobarComponentes(comp_D,kg_D,lote_D);
+
+    //Tornillo 5
+    var comp_E = $("input[name='comp_E\\[\\]']").map(function(){return $(this).val();}).get();
+    var kg_E = $("input[name='kg_E\\[\\]']").map(function(){return $(this).val();}).get();
+    var lote_E = $("input[name='lote_E\\[\\]']").map(function(){return $(this).val();}).get();
+    //Comprobacion de campos
+    var comprobacionTor5 = camprobarComponentes(comp_E,kg_E,lote_E);
+
+    //Tornillo 6
+    var comp_F = $("input[name='comp_F\\[\\]']").map(function(){return $(this).val();}).get();
+    var kg_F = $("input[name='kg_F\\[\\]']").map(function(){return $(this).val();}).get();
+    var lote_F = $("input[name='lote_F\\[\\]']").map(function(){return $(this).val();}).get();
+    //Comprobacion de campos
+    var comprobacionTor6 = camprobarComponentes(comp_F,kg_F,lote_F);
+
+    //Tornillo 7
+    var comp_G = $("input[name='comp_G\\[\\]']").map(function(){return $(this).val();}).get();
+    var kg_G = $("input[name='kg_G\\[\\]']").map(function(){return $(this).val();}).get();
+    var lote_G = $("input[name='lote_G\\[\\]']").map(function(){return $(this).val();}).get();
+    //Comprobacion de campos
+    var comprobacionTor7 = camprobarComponentes(comp_G,kg_G,lote_G);
+
+    //Estado de campos de tornillos
+    var arrayEstados = [comprobacionTor1, comprobacionTor2, comprobacionTor3, comprobacionTor4, comprobacionTor5, comprobacionTor6, comprobacionTor7];
+    var correcto;
+
+    if($.inArray(0, arrayEstados) !== -1){correcto = false;}
+    else{correcto = true;}
+
+    return correcto;
+  }
+
+$("#form-mezcla").submit(function(event) {
+    /* Act on the event */
+    if (comprobacionCompleta() == true) {
+      return true;
+    }else{
+      alert('¡ Por favor, validar los campos no diligenciados correctamente !');
+      return false;
+
+    }
     
+  });  
+
 });
 
 
