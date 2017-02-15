@@ -177,6 +177,93 @@ $fila = sqlsrv_fetch_object($registrosExt);
 
                 </tr>
               </table>
+              <!-- Especificaciones -->
+              <!--- Especificaciones Orden de Produccion Extrusion -->
+                    <h4 align="center"><b>Especificaciones</b></h4>
+                        <div class="col-md-3">
+                            <h4 align="center"><input type="checkbox" class="chkplas" class="chkplas" id="chk15"  value="chk_ancho" name="chkRequisito[]"> Ancho (cms)</h4>
+                                <div class="table-responsive"> 
+                                    <table class="table table-bordered"> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>MIN</th> 
+                                                <th>OBJ</th> 
+                                                <th>MAX</th> 
+                                            </tr> 
+                                        </thead> 
+                                        <tbody> 
+                                            <tr>    <td><?php echo $fila->ANCHOMN ?></td> 
+                                                    <td><?php echo $fila->ANCHO ?></td> 
+                                                    <td><?php echo $fila->ANCHOMX ?></td> 
+                                            </tr>           
+                                        </tbody> 
+                                    </table> 
+                                </div>
+                                 <input type="text" name="ancho" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <h4 align="center"><input type="checkbox" class="chkplas" class="chkplas" id="chk16"  value="chk_calibre" name="chkRequisito[]"> Calibre (mp)</h4>
+                                <div class="table-responsive"> 
+
+                                    <table class="table table-bordered"> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>MIN</th> 
+                                                <th>OBJ</th> 
+                                                <th>MAX</th> 
+                                            </tr> 
+                                        </thead> 
+                                        <tbody> 
+                                            <tr>    <td><?php echo $fila->CALIBREMN ?></td> 
+                                                    <td><?php echo $fila->CALIBRE ?></td> 
+                                                    <td><?php echo $fila->CALIBREMX ?></td> 
+                                            </tr>           
+                                        </tbody> 
+                                    </table> 
+                                </div>
+                                 <input type="text" name="calibre" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <h4 align="center"><input type="checkbox" class="chkplas" class="chkplas" id="chk17"  value="chk_peso_m" name="chkRequisito[]"> Peso Muestra (g)</h4>
+                                <div class="table-responsive"> 
+                                    <table class="table table-bordered"> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>MIN</th> 
+                                                <th>OBJ</th> 
+                                                <th>MAX</th> 
+                                            </tr> 
+                                        </thead> 
+                                        <tbody> 
+                                            <tr>    <td><?php echo $fila->PESOMOLMN ?></td> 
+                                                    <td><?php echo $fila->PESOMOL ?></td> 
+                                                    <td><?php echo $fila->PESOMOLMX ?></td> 
+                                            </tr>           
+                                        </tbody> 
+                                    </table> 
+                                </div>
+                                 <input type="text" name="peso_m" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                                <div class="table-responsive"> 
+                                 <h4 align="center">Velocidades (Hz)</h4>
+                                    <table class="table table-bordered"> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>HALADOR</th> 
+                                                <th>BOBINADOR</th> 
+                                            </tr> 
+                                        </thead> 
+                                        <tbody> 
+                                            <tr>    <td><?php echo $fila->VELOHALADOR ?></td> 
+                                                    <td><?php echo $fila->VELOBOBINADOR ?></td> 
+                                            </tr>           
+                                        </tbody> 
+                                    </table> 
+                                </div>
+                        </div>
+              <!-- Especificaciones -->
+
 
               <table class="table table-bordered table-hover">
                 <tr>

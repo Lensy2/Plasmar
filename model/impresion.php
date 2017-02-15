@@ -40,14 +40,12 @@ $control_matizador = "SELECT * FROM dbo.cm_matizador cc inner join usuarios us o
 $control_anali_apro = "SELECT * FROM dbo.cm_analista cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado_ana = 'aprobado' order by fecha desc";
 $control_analista = "SELECT * FROM dbo.cm_analista cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado_ana = 'pendiente' order by fecha desc";
 
-
 $control_super_apro = "SELECT * FROM dbo.cm_supervisor cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado_sup = 'aprobado' order by fecha desc";
 $control_supervisor = "SELECT * FROM dbo.cm_supervisor cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado_sup = 'pendiente' order by fecha desc";
 
 if (isset($Idinconf)) {
 	$det_inconf = "SELECT * FROM imp_inconformidades inner join usuarios on imp_inconformidades.Idusuario=usuarios.Idusuario where Idimp_inconformidades = '".$Idinconf."'";
 }
-
 
 if (isset($pedido)) {
 $contadorCMSup = "SELECT Count(*) AS Total FROM cm_supervisor where num_orden = '$pedido'";
@@ -234,8 +232,4 @@ FROM (dbo.VMERCIA_SERVICIO INNER JOIN (dbo.IMPRESION INNER JOIN dbo.MTPROCLI ON 
 ON dbo.VMERCIA_SERVICIO.CODIGO = dbo.IMPRESION.CODIGO) INNER JOIN dbo.CYRELESMJ ON dbo.IMPRESION.ORDENNRO = dbo.CYRELESMJ.ORDENNRO
 WHERE ((dbo.IMPRESION.ORDENNRO) = '.$pedido.')';
 }
-
-
-
-
 ?>

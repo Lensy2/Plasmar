@@ -1,6 +1,5 @@
 <?php 
-	$pedido = $_GET['pedido'];
-	
+	$pedido = $_GET['pedido'];	
 	include '../includes/dbconfig.php';
   include '../model/refilado.php';
 
@@ -24,7 +23,7 @@ if ($fila->Total == 0){
                 </div>
           <div class='col-md-8'>";
       echo "<b>Información:</b> este pedido se encuentra disponible para ser gestionado, para realizar premontaje presione el botón aceptar.";
-      echo    "<form method='post' action='http://".$_SERVER['SERVER_NAME']."/apps/refilado/control_requisito/nuevo_control_requisito.php'>
+      echo    "<form method='get' action='http://".$_SERVER['SERVER_NAME']."/apps/refilado/control_requisito/nuevo_control_requisito.php'>
                   <input name='pedido' type='hidden' value='".$pedido."'>
                   <input type='submit' class='btn btn-info' name='submit' value='Aceptar'>
               </form></br>";
@@ -62,7 +61,7 @@ if ($fila->Total == 0){
                 </div>
           <div class='col-md-8'>";
       echo "<b>Información:</b> este pedido se encuentra disponible para ser gestionado, para realizar premontaje presione el botón aceptar.";
-      echo    "<form method='post' action='http://".$_SERVER['SERVER_NAME']."/apps/refilado/control_requisito/nuevo_control_requisito.php'>
+      echo    "<form method='get' action='http://".$_SERVER['SERVER_NAME']."/apps/refilado/control_requisito/nuevo_control_requisito.php'>
                   <input name='pedido' type='hidden' value='".$pedido."'>
                   <input type='submit' class='btn btn-info' name='submit' value='Aceptar'>
               </form></br>";

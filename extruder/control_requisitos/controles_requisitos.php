@@ -11,6 +11,7 @@ if (isset($_SESSION['usuario'])) {
   include '../../includes/dbconfig.php';
   include '../../includes/extruder/header.php';
   include '../../model/extruder.php';
+  require_once '../../class/Extrusion.php';
 ?>
 
       <!-- =============================================== -->
@@ -52,7 +53,8 @@ if (isset($_SESSION['usuario'])) {
                         <th>Tipo de Extrusion</th>
                         <th>Mezcla #</th>
                         <th>Usuario</th>
-                        <th>Operario responsable</th>            
+                        <th>Operario responsable</th>
+                        <th>Observación</th>           
                         <th>Estado</th>
                         <th>Accion</th>
                         <th>Ver</th>
@@ -69,6 +71,10 @@ if (isset($_SESSION['usuario'])) {
                 echo "<td>".$fila->num_mezcla."</td>";
                 echo "<td>".$fila->nombre." ".$fila->apellido. "</td>";
                 echo "<td>".$fila->operario_res."</td>";
+                /*Buscar descripcion de acuerdo al tipo de extrusion*/
+                $ext = new Extrusion();
+                $obs = $ext->getDescripciones($fila->num_orden, $fila->tipo_ext);
+                echo "<td>".$obs."</td>";
                 echo "<td><span class='label label-warning'>".$fila->estado."</span></td>";
                 echo "<td><i class='fa fa-fw fa-edit'></i><a href='editar_control_requisito.php?id=$fila->Idcontrol_requisito&pedido=$fila->num_orden&tipo_ext=$fila->tipo_ext'>Editar</a></td>";
                 echo "<td><i class='fa fa-fw fa-eye'></i><a href='detalles.php?pedido=$fila->num_orden & tipo_ext=$fila->tipo_ext'>Detalles</a></td>";

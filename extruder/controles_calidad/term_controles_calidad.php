@@ -11,6 +11,7 @@ $enlace = rutaRecursos('segundo_nivel');
   include '../../includes/dbconfig.php';
   include '../../includes/extruder/header.php';
   include '../../model/extruder.php';
+  require_once '../../class/Extrusion.php';
 ?>
 
       <!-- =============================================== -->
@@ -52,7 +53,8 @@ $enlace = rutaRecursos('segundo_nivel');
                         <th>Tipo de Extrusion</th>
                         <th>Mezcla #</th>
                         <th>Rollo #</th>
-                        <th>Usuario</th>           
+                        <th>Usuario</th> 
+                        <th>Observación</th>             
                         <th>Estado</th>
                         <th>Ver</th>
                     </tr>
@@ -68,6 +70,10 @@ $enlace = rutaRecursos('segundo_nivel');
                 echo "<td>".$fila->num_mezcla."</td>";
                 echo "<td>".$fila->num_rollo."</td>";
                 echo "<td>".$fila->nombre." ".$fila->apellido. "</td>";
+                /*Buscar descripcion de acuerdo al tipo de extrusion*/
+                $ext = new Extrusion();
+                $obs = $ext->getDescripciones($fila->num_orden, $fila->tipo_ext);
+                echo "<td>".$obs."</td>";
                 echo "<td><span class='label label-success'>".$fila->estado."</span></td>";
                  echo "<td><i class='fa fa-fw fa-eye'></i><a href='detalles_apro.php?pedido=$fila->num_orden & tipo_ext=$fila->tipo_ext'>Detalles</a></td>";
               echo "</tr>";
