@@ -16,6 +16,9 @@ if (isset($_SESSION['usuario'])) {
   include '../../includes/dbconfig.php';
   include '../../model/refilado.php';
   include '../../includes/refilado/header.php';
+    require_once  '../../class/Refilado.php';
+  $orden_refilado = new Refilado();
+  $dataOrden = $orden_refilado->getOrdenProduccion($_GET['pedido']);
 ?>
 
   <!-- =============================================== -->
@@ -43,24 +46,6 @@ if (isset($_SESSION['usuario'])) {
           <div class="box">            
             <div class="box-body">
 
-          
-          <?php
-
-            $registrosRefi = sqlsrv_query($connPlas,$leerRefi);
-
-            if( $registrosRefi === false ) {
-            die( print_r( sqlsrv_errors(), true));
-            }
-    
-
-            
-            while ($fila = sqlsrv_fetch_object($registrosRefi)) {
-             
-          
-            //$fila = sqlsrv_fetch_object($registrosLam);
-            //echo $leerLam;
-            ?>
-
         <!--- Descripcion General Orden de Laminacion -->
         <h3 align="center">Descripción General</h3>
         <br>
@@ -81,13 +66,13 @@ if (isset($_SESSION['usuario'])) {
                       <tbody> 
                       
                   <tr>
-                  <td><input type="hidden" name="num_orden" value='<?php echo $fila->PEDIDO; ?>'><?php echo $fila->ORDENNRO; ?></td>
+                  <td><input type="hidden" name="num_orden" value='<?php echo $dataOrden['ORDENNRO']; ?>'><?php echo $dataOrden['ORDENNRO']; ?></td>
                   
-                  <td><?php echo date_format($fila->FHENTREGA, 'd/m/y') ?></td>
-                  <td><?php echo $fila->NOMBRE; ?></td>
-                  <td><?php echo $fila->NIT; ?></td>
-                  <td><?php echo $fila->DESCRIPCIO."-".$fila->DESCRIP2; ?></td>
-                  <td><?php echo $fila->CODIGO; ?></td>
+                  <td><?php echo date_format($dataOrden['FHENTREGA'], 'd/m/y') ?></td>
+                  <td><?php echo $dataOrden['NOMBRE']; ?></td>
+                  <td><?php echo $dataOrden['NIT']; ?></td>
+                  <td><?php echo $dataOrden['DESCRIPCIO']."-".$dataOrden['DESCRIP2']; ?></td>
+                  <td><?php echo $dataOrden['CODIGO']; ?></td>
                    
                   </tr>
                   </tbody>
@@ -117,11 +102,11 @@ if (isset($_SESSION['usuario'])) {
                                     
                                     
                       <tr>
-                            <td><?php echo $fila->DESTINO; ?></td>
-                            <td><?php echo $fila->KILOSPD; ?></td>
-                            <td><?php echo $fila->RADIORLL; ?></td>
-                            <th>Ancho (mm)</th><td><?php echo $fila->ANCHOG; ?></td>
-                            <th>Largo (mm)</th><td><?php echo $fila->LARGOG; ?></td>
+                            <td><?php echo $dataOrden['DESTINO']; ?></td>
+                            <td><?php echo $dataOrden['KILOSPD']; ?></td>
+                            <td><?php echo $dataOrden['RADIORLL']; ?></td>
+                            <th>Ancho (mm)</th><td><?php echo $dataOrden['ANCHOG']; ?></td>
+                            <th>Largo (mm)</th><td><?php echo $dataOrden['LARGOG']; ?></td>
 
                             
                       </tr>
@@ -152,9 +137,9 @@ if (isset($_SESSION['usuario'])) {
                       <tr>
                             <td></td>
                             <td></td>
-                            <td><?php echo $fila->TIPOPED; ?></td>
-                            <td><?php echo $fila->MATERIAL; ?></td>
-                            <td><?php echo $fila->ALTURAS; ?></td>
+                            <td><?php echo $dataOrden['TIPOPED']; ?></td>
+                            <td><?php echo $dataOrden['MATERIAL']; ?></td>
+                            <td><?php echo $dataOrden['ALTURAS']; ?></td>
                             
                       </tr>
                           </tbody>
@@ -182,10 +167,10 @@ if (isset($_SESSION['usuario'])) {
                                     <tbody> 
                                     
                                         
-                          <td><?php echo $fila->ANCHOMN; ?></td>
-                          <td><?php echo $fila->ANCHO; ?></td>
-                          <td><?php echo $fila->ANCHOMX; ?></td>
-                          <td><?php echo $fila->ANCHOMN; ?></td>
+                          <td><?php echo $dataOrden['ANCHOMN']; ?></td>
+                          <td><?php echo $dataOrden['ANCHO']; ?></td>
+                          <td><?php echo $dataOrden['ANCHOMX']; ?></td>
+                          <td><?php echo $dataOrden['ANCHOMN']; ?></td>
                                         </tr>          
                                     </tbody> 
                                 </table> 
@@ -205,9 +190,9 @@ if (isset($_SESSION['usuario'])) {
                                     </thead> 
                                     <tbody> 
                           <tr>    
-                          <td><?php echo $fila->PASOMN; ?></td>
-                          <td><?php echo $fila->PASO; ?></td>
-                          <td><?php echo $fila->PASOMX; ?></td>
+                          <td><?php echo $dataOrden['PASOMN']; ?></td>
+                          <td><?php echo $dataOrden['PASO']; ?></td>
+                          <td><?php echo $dataOrden['PASOMX']; ?></td>
                           </tr>           
                                     </tbody> 
                                 </table> 
@@ -227,9 +212,9 @@ if (isset($_SESSION['usuario'])) {
                                     </thead> 
                                     <tbody> 
                           <tr>   
-                          <td><?php echo $fila->CALIBREMN; ?></td>
-                          <td><?php echo $fila->CALIBRE; ?></td>
-                          <td><?php echo $fila->CALIBREMX; ?></td>
+                          <td><?php echo $dataOrden['CALIBREMN']; ?></td>
+                          <td><?php echo $dataOrden['CALIBRE']; ?></td>
+                          <td><?php echo $dataOrden['CALIBREMX']; ?></td>
                           </tr>           
                                     </tbody> 
                                 </table> 
@@ -257,9 +242,9 @@ if (isset($_SESSION['usuario'])) {
                                     </thead> 
                                     <tbody> 
                           <tr>  
-                          <td><?php echo $fila->PESOBMN; ?></td>
-                          <td><?php echo $fila->PESOB; ?></td>
-                          <td><?php echo $fila->PESOBMX; ?></td>
+                          <td><?php echo $dataOrden['PESOBMN']; ?></td>
+                          <td><?php echo $dataOrden['PESOB']; ?></td>
+                          <td><?php echo $dataOrden['PESOBMX']; ?></td>
                           </tr>           
                                     </tbody> 
                                 </table> 
@@ -279,9 +264,9 @@ if (isset($_SESSION['usuario'])) {
                                     </thead> 
                                     <tbody> 
                           <tr>    
-                          <td><?php echo $fila->PESONMN; ?></td>
-                          <td><?php echo $fila->PESON; ?></td>
-                          <td><?php echo $fila->PESONMX; ?></td>
+                          <td><?php echo $dataOrden['PESONMN']; ?></td>
+                          <td><?php echo $dataOrden['PESON']; ?></td>
+                          <td><?php echo $dataOrden['PESONMX']; ?></td>
                           </tr>          
                                     </tbody> 
                                 </table> 
@@ -295,7 +280,7 @@ if (isset($_SESSION['usuario'])) {
                                     
                                     <tbody> 
                           <tr>   
-                          <td style="text-align: center;"><?php echo $fila->EMBALAJE; ?></td>
+                          <td style="text-align: center;"><?php echo $dataOrden['EMBALAJE']; ?></td>
                           
                           </tr>          
                                     </tbody> 
@@ -308,7 +293,7 @@ if (isset($_SESSION['usuario'])) {
 
             <?php 
               //Ruta Imgs Montaje
-              $rutaMon = substr($fila->FEMBOBINA, 2);
+              $rutaMon = substr($dataOrden['FEMBOBINA'], 2);
               $rutaMonLimpia = trim($rutaMon);
               $numMon = rutaMontaje($rutaMonLimpia);
 
@@ -327,7 +312,7 @@ if (isset($_SESSION['usuario'])) {
                        <tbody> 
                        <tr> 
                        <td><?php echo $imgMontaje ?></td>
-                          <td><?php echo $fila->OBSERVA1.", ".$fila->OBSERVA2.", ".$fila->OBSERVA3.", ".$fila->OBSERVA4.", ".$fila->OBSERVA5.", ".$fila->OBSERVA6.", ".$fila->OBSERVA7.", ".$fila->OBSERVA8?></td>                            
+                          <td><?php echo $dataOrden['OBSERVA1'].", ".$dataOrden['OBSERVA2'].", ".$dataOrden['OBSERVA3'].", ".$dataOrden['OBSERVA4'].", ".$dataOrden['OBSERVA5'].", ".$dataOrden['OBSERVA6'].", ".$dataOrden['OBSERVA7'].", ".$dataOrden['OBSERVA8']?></td>                            
                           </tr>           
                         </tbody> 
                       </thead> 
@@ -345,7 +330,7 @@ if (isset($_SESSION['usuario'])) {
                         </tr>
                         <tbody>
                           <tr>
-                            <td><?php echo $fila->CORE;?> Pulgadas</td>
+                            <td><?php echo $dataOrden['CORE'];?> Pulgadas</td>
                           </tr>
                         </tbody>
                        
@@ -354,12 +339,7 @@ if (isset($_SESSION['usuario'])) {
                     </table> 
                 </div>
               </div>
-              
 
-           <?php 
-                }
-            sqlsrv_close( $connPlas );
-            ?>
             <div class="row">
               
                <div class="col-xs-9">

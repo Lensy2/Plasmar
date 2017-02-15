@@ -64,7 +64,7 @@ class Fotomulta {
       $h = '5';
       $hm = $h * 60;
       $ms = $hm * 60;
-      $fecha =  gmdate("Y/m/d H:i:s", time()-($ms));
+      $fecha =  gmdate("d/m/Y H:i:s", time()-($ms));
 
       /*Configuracion de query Transact-SQL*/
       $tsql = "INSERT INTO foto_multas (num_orden,cliente,descripcion,referencia,fecha,tipo_inconf,tipo_proceso,num_rollo,maquina,cantidad,detectada_por,operario_res,causa,descripcion_inc,dispo_final,evidencia,Idusuario,fecha_fotomulta,area,Sistema_afectado) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
@@ -101,8 +101,7 @@ class Fotomulta {
         &$_POST['Fecha_foto'], 
         &$_POST['Area'], 
         &$_POST['Sistema_Afect']);
-      } else {        
-
+      } else {
         $params  = array(
         &$_POST['Pedido'], 
         &$_POST['Cliente'], 

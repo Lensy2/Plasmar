@@ -50,7 +50,7 @@ if (isset($_SESSION['usuario'])) {
             <th>Usuario</th>
             <th>Operario responsable</th>      
             <th>Estado</th>
-            <th>Ver</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -64,7 +64,16 @@ while($fila = sqlsrv_fetch_object($registros))
     echo "<td>".$fila->nombre." ".$fila->apellido. "</td>";
     echo "<td>".$fila->operario."</td>";
     echo "<td><span class='label label-success'>".$fila->estado."</span></td>";
-    echo "<td><i class='fa fa-fw fa-eye'></i><a href='detalles.php?pedido=$fila->num_orden'>Detalles</a></td>";
+    echo "<td><div class='dropdown'>
+  <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
+    Opciones
+    <span class='caret'></span>
+  </button>
+  <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
+    <li><a href='detalles.php?pedido=$fila->num_orden'><i class='fa fa-fw fa-eye'></i> Visualizar</a></li>
+    <li><a class='btnTerminarReq' data-id='".$fila->Idrefilado_requisitos."'  href='#'><i class='fa fa-exclamation-circle'></i> Terminar</a></li>
+  </ul>
+</div></td>";
   echo "</tr>";
 }
 sqlsrv_close($connSCPBD);

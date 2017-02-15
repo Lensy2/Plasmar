@@ -48,6 +48,7 @@ if (isset($_SESSION['usuario'])) {
         <tr>
             <th>#Reg</th>
             <th>Fecha de Ingreso</th>
+            <th>Consecutivo</th>
             <th>Orden #</th>
             <th>Usuario</th>
             <th>Operario responsable</th>      
@@ -63,6 +64,7 @@ while($fila = sqlsrv_fetch_object($registros))
   echo "<tr>";
     echo "<td>".$fila->Idrefilado_requisitos."</td>";
     echo "<td>".date_format($fila->fecha, 'm/d/Y g:i:s A')."</td>";
+    echo "<td>".$fila->consecutivo."</td>";
     echo "<td>".$fila->num_orden."</td>";
     echo "<td>".$fila->nombre." ".$fila->apellido. "</td>";
     echo "<td>".$fila->operario."</td>";
@@ -101,7 +103,7 @@ sqlsrv_close($connSCPBD);
                   <b>Información:</b> por favor ingresar el numero de la orden / pedido  para realizar la consulta. 
               </div>
             <div class='col-md-4'>
-              <input type="text" placeholder="Ingresar Valor" class="form-control" id="recipient-name">
+              <input type="number" placeholder="Ingresar Valor" class="form-control" id="recipient-name">
               
             </div>
             <div class='col-md-2'>

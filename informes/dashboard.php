@@ -37,7 +37,7 @@ if (isset($_SESSION['usuario'])) {
           <!-- Small boxes (Stat box) -->
           <div class="box">
           <div class="box-header">
-                  <h3 class="box-title">Dashboard</h3>
+                  <h3 class="box-title">INFORMES - NO CONFORME Y EN TRANSITO</h3>
           </div><!-- /.box-header -->
                 <div class="box-body bg-gray">
           <div class="row">
@@ -57,9 +57,9 @@ if (isset($_SESSION['usuario'])) {
 
            <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-              <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
-              <div class="info-box-content">
+              <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                <div class="info-box-content">
                 <span class="info-box-text">Inconformidades</span>
                 <span class="info-box-number"><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/informes/procesos_subprocesos">Procesos y Sub Procesos</a></span>
               </div>
@@ -95,6 +95,28 @@ if (isset($_SESSION['usuario'])) {
             <!-- /.info-box -->
           </div>
 
+          </div><!-- /.row -->          
+          </div>
+      </div>
+      <!-- INFORME DE INCUMPLIMIENTO AL S.G.I-->
+      <div class="box">
+          <div class="box-header">
+                  <h3 class="box-title">INFORMES - INCUMPLIMENTO AL S.G.I</h3>
+          </div><!-- /.box-header -->
+                <div class="box-body bg-gray">
+          <div class="row">
+
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-aqua"><i class="ion ion-android-walk"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-number"><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/informes/incumplimiento">INCUMPLIMENTO AL S.G.I</a></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
           </div><!-- /.row -->          
           </div>
 </div>

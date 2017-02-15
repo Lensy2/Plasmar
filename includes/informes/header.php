@@ -292,7 +292,13 @@
               <a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/informes/operario">
                 <i class="ion ion-man"></i> <span>Inc x Operarios - Top 10</span>
               </a>
-            </li>         
+            </li>
+
+            <li <?php if ($archivo == 'operario') {echo "class='active'";}?>>              
+              <a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/informes/incumplimiento">
+                <i class="ion ion-android-walk"></i> <span>Incumplimiento al S.G.I</span>
+              </a>
+            </li>       
 
             
            

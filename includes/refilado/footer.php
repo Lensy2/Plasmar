@@ -15,6 +15,14 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="<?php echo $enlace;?>/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script src="<?php echo $enlace;?>/jquery-ui/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript">
+        $('#fechrefi').datetimepicker({
+            dateFormat: "dd-mm-yy"
+        });
+
+
+    </script>
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
@@ -49,7 +57,8 @@
     <script src="<?php echo $enlace;?>/plugins/iCheck/icheck.min.js"></script>
      <!--- FileInput - Subir Imagenes--> 
     <script src="<?php echo $enlace;?>/plugins/fileInput/js/fileinput.min.js" type="text/javascript"></script>
-
+     <!--- Sweeralert --> 
+    <script src="<?php echo $enlace;?>/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo $enlace;?>/dist/js/app.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
