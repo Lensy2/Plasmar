@@ -266,9 +266,11 @@
           <?php 
             //Ruta Imgs Montaje
             $rutaMon = substr($dataOrden['FEMBOBINA'], 2);
-            $rutaMonLimpia = trim($rutaMon);
-            $numMon = rutaMontaje($rutaMonLimpia);            
+           $rutaMonLimpia = trim($rutaMon);
+              $imgFinal = strtolower($rutaMonLimpia);
+              $numMon = rutaMontaje($imgFinal);          
             $imgMontaje = "<img src='ftp://192.168.0.19/Plasmar/Producci/$numMon'/>";
+            
             ?>
           <div class="col-md-12">
             <div class="table-responsive">
@@ -301,11 +303,15 @@
                       <?php
                        $n = $dataOrden['NIT'];
                           $NIT = trim($n);
-                          $ord = $dataOrden['ORDENNRO'];
-                          $ORDENNRO = trim($ord);
+                           $cod = $dataOrden['CODIGO'];
+                          $CODIGO = trim($cod);
 
+                           $orden_refilado = new Refilado();
+                          $dataObsCalidad1 = $orden_refilado->getObsCalidadFirst($NIT,$CODIGO);
+                          echo $dataObsCalidad1['OBSERVACIO'];
+echo "<br>";
                           $orden_refilado = new Refilado();
-                          $dataObsCalidad = $orden_refilado->getObsCalidad($NIT,$ORDENNRO);
+                          $dataObsCalidad = $orden_refilado->getObsCalidad($NIT,$CODIGO);
                           foreach ($dataObsCalidad as $key => $value) {
                             echo $value['OBSERVACIO']."<br>";
                           }

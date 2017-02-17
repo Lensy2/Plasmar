@@ -53,9 +53,20 @@ class Refilado {
     /*
     *Metodo para regresar las observaciones de calidad de una orden de produccion de el area de Refilado
     */
-    public function getObsCalidad($nit,$orden) {
+    public function getObsCalidadFirst($nit,$codigo) {
       $data_array = array();
-      $result = sqlsrv_query($this->connectPlas(), "SELECT DISTINCT OBSERVACIO FROM vOBS_REFILADO_SCP WHERE OBS_NIT = '$nit' AND PROCESO = 'REFILADO' AND ORDENNRO  = '$orden'");
+      $result = sqlsrv_query($this->connectPlas(), "SELECT DISTINCT OBSERVACIO FROM dbo.OBSCALIDAD o WHERE ((o.NIT='$nit' AND o.CODIGO='') OR (o.CODIGO='$codigo') )AND o.OBSERVACIO<>'' AND PROCESO='REFILADO'");
+      $row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC);
+      if ($result === false) {die( print_r( sqlsrv_errors(), true));}
+
+      return $row; 
+    }
+    /*
+    *Metodo para regresar las observaciones de calidad de una orden de produccion de el area de Refilado
+    */
+    public function getObsCalidad($nit,$codigo) {
+      $data_array = array();
+      $result = sqlsrv_query($this->connectPlas(), "SELECT DISTINCT OBSERVACIO FROM dbo.OBSCALIDAD o WHERE ((o.NIT='$nit' AND o.CODIGO='') OR (o.CODIGO='$codigo') )AND o.OBSERVACIO<>'' AND PROCESO='REFILADO'");
       $row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC);
       if ($result === false) {die( print_r( sqlsrv_errors(), true));}
 

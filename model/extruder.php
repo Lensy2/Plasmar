@@ -22,15 +22,15 @@ $inconformidades_term ="SELECT * FROM dbo.ext_inconformidades order by fecha des
 //$controles_calidad_pend ="SELECT * FROM dbo.controles_calidad cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado = 'pendiente' order by fecha desc";
 $controles_calidad_pend ="SELECT * FROM dbo.controles_calidad cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado = 'pendiente' order by fecha desc";
 
-$controles_calidad_term ="SELECT * FROM dbo.controles_calidad cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado = 'terminado' order by fecha desc";
+$controles_calidad_term ="SELECT top 500 * FROM dbo.controles_calidad cc inner join usuarios us on cc.Idusuario=us.Idusuario where estado = 'terminado' order by fecha desc";
 
 $control_mezclas_pend = "SELECT * FROM dbo.control_mezclas cm inner join usuarios us on cm.Idusuario=us.Idusuario where estado = 'pendiente' order by fecha desc";
 
-$control_mezclas_apro = "SELECT * FROM dbo.control_mezclas cm inner join usuarios us on cm.Idusuario=us.Idusuario where estado = 'aprobado' order by fecha desc";
+$control_mezclas_apro = "SELECT top 500 * FROM dbo.control_mezclas cm inner join usuarios us on cm.Idusuario=us.Idusuario where estado = 'aprobado' order by fecha desc";
 
 $control_requisitos_pend = "SELECT * FROM dbo.control_requisitos cr inner join usuarios us on cr.Idusuario=us.Idusuario where estado = 'pendiente' order by fecha desc";
 
-$control_requisitos_apro = "SELECT * FROM dbo.control_requisitos cr inner join usuarios us on cr.Idusuario=us.Idusuario where estado = 'aprobado' order by fecha desc";
+$control_requisitos_apro = "SELECT top 500 * FROM dbo.control_requisitos cr inner join usuarios us on cr.Idusuario=us.Idusuario where estado = 'aprobado' order by fecha desc";
 
 $lista_liberan = "SELECT  * FROM dbo.LIBERAN";
 $lista_coord = "SELECT  * FROM dbo.COORDINAN";
