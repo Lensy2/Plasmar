@@ -97,7 +97,7 @@ $(function () {
   *Autocompletado de Tipos de inconformidad
   */
   $( ".auto_tipo" ).select2({
-    placeholder: "Filtre el tipo de inconformidad ó presione la tecla espacio para ver la lista",
+    placeholder: "Filtre el tipo de inconformidad ó presione la tecla espacio para ver la lista.",
       ajax: {
           url: "listaInconformidades.php?t=1",
           dataType: 'json',
@@ -123,7 +123,7 @@ $(function () {
   *Autocompletado de Procesos
   */
   $( ".auto_procesos" ).select2({
-    placeholder: "Seleccionar un Proceso",
+    placeholder: "Filtre el tipo de proceso ó presione la tecla espacio para ver la lista.",
       ajax: {
           url: "listaInconformidades.php?t=2",
           dataType: 'json',

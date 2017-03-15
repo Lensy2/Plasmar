@@ -49,7 +49,7 @@ class Fotomulta {
     public function getCausas ($tipo,$procs,$search) {
         // reset results; is this really needed as object's variable? Can't it be just local function's variable??
         $data_array = array();
-        $result = sqlsrv_query($this->connect(), "SELECT Id,Causa FROM Inconformidades  WHERE Tipo = '$tipo' AND Proceso = '$procs' ");
+        $result = sqlsrv_query($this->connect(), "SELECT Id,Causa FROM Inconformidades  WHERE Tipo = '$tipo' AND Proceso = '$procs' and (Causa LIKE '%$search%' or '%$search%'= '%*%' ) ");
         while ($row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)) {
             $data_array[] = $row;                                                    
         }
