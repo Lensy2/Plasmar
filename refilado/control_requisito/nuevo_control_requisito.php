@@ -402,10 +402,10 @@ if (isset($_SESSION['usuario'])) {
           <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-fw fa-warning"></i>Plano Mecanico</h4>
         </div>
         <div class="modal-body">
-          <div class="row"><img src="ftp://192.168.2.8/Pruebas/JPG%20PRODUCCION/%3C?php%20echo%20$plano%20?%3E.jpg" style="max-width: 100%;"></div>
+          <div class="row"><img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG%20PRODUCCION/%3C?php%20echo%20$plano%20?%3E.jpg" style="max-width: 100%;"></div>
         </div>
         <div class="modal-footer">
-          <a href="ftp://192.168.2.8/Pruebas/JPG%20PRODUCCION/%3C?php%20echo%20$plano%20?%3E.jpg" target="blank"><button class="btn btn-primary" type="button">Abrir en nueva pestaña</button></a> <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
+          <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG%20PRODUCCION/%3C?php%20echo%20$plano%20?%3E.jpg" target="blank"><button class="btn btn-primary" type="button">Abrir en nueva pestaña</button></a> <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
         </div>
       </div>
     </div>

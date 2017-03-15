@@ -171,7 +171,7 @@ return $nomBoc;
 function rutaPlano($query)
 {
   $planoMec = trim($query);
-  $nombre_fichero = 'ftp://192.168.2.8/Pruebas/JPG PRODUCCION/'.$planoMec.'.jpg';
+  $nombre_fichero = 'ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/'.$planoMec.'.jpg';
 
   if (file_exists($nombre_fichero)) {
     echo "<a href='#' class='btn btn-app' data-toggle='modal' data-target='#modalPlano' >
