@@ -293,11 +293,10 @@ if (isset($_SESSION['usuario'])) {
 
             <?php 
               //Ruta Imgs Montaje
-              $rutaMon = substr($dataOrden['FEMBOBINA'], 2);
+              $rutaMon = $dataOrden['FEMBOBINA'];
               $rutaMonLimpia = trim($rutaMon);
               $numMon = rutaMontaje($rutaMonLimpia);
-
-              $imgMontaje = "<img src='ftp://hestia/Plasmar/Producci/$numMon'/>";
+              $imgMontaje = "<img src='$numMon'/>";
              ?>
 
 
@@ -345,7 +344,7 @@ if (isset($_SESSION['usuario'])) {
                <div class="col-xs-9">
                  <br>                    
                   <div class="col-md-2">
-                        <a class="btn btn-block btn-primary" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/refilado/control_requisito/requisitos.php" style="text-decoration: none;">Vovler</a>
+                        <a class="btn btn-block btn-primary" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/refilado/control_requisito/requisitos.php" style="text-decoration: none;">Volver</a>
                   </div>
                </div>
             </div>
