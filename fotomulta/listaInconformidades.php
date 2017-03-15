@@ -46,7 +46,7 @@ switch ($tipo) {
 		$data[] = array('id' => $value['Id'], 'text' => $value['Causa']);			 	
 	   } 
 	} else {
-	   $data[] = array('id' => '0', 'text' => 'No Products Found');
+	   $data[] = array('id' => '0', 'text' => 'No se encontraron causas');
 	}
 	// return the result in json
 	echo json_encode($data);
