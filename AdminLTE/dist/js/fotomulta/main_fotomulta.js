@@ -97,7 +97,7 @@ $(function () {
   *Autocompletado de Tipos de inconformidad
   */
   $( ".auto_tipo" ).select2({
-    placeholder: "Ingrese una palabra clave para filtrar o digite * para ver la lista",
+    placeholder: "Filtre el tipo de inconformidad ó presione la tecla espacio para ver la lista",
       ajax: {
           url: "listaInconformidades.php?t=1",
           dataType: 'json',
