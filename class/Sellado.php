@@ -4,7 +4,7 @@ class Sellado {
     protected $connection = null;
     protected $connection_plas = null;
 
-    public function connect($database = 'SCPBD_DEV') {
+    public function connect($database = 'SCPBD') {
         // we don't need to connect twice
         if ( $this->connection ) {
             return;
