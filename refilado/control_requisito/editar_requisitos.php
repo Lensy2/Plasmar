@@ -51,9 +51,8 @@
       <!-- /.box-header -->
       <div class="box-body">
         <?php
-            $refilado = explode(',', $dataRequisito['refilado']);
-          
-          ?>
+          $refilado = explode(',', $dataRequisito['refilado']);          
+        ?>
         <!--- Descripcion General Orden de Laminacion -->
         <h3 align="center">Descripción General</h3>
         <br>
@@ -123,8 +122,8 @@
               </thead>
               <tbody>
                 <?php
-                  $fechabien = date_format($dataRequisito['fechare'], 'd/m/Y H:i:s');                  
-                  ?>
+                  $fechabien = date_format($dataRequisito['fechare'], 'd/m/Y H:i:s');
+                ?>
                 <tr>
                   <td><input class="form-control" data-format="dd/MM/yyyy hh:mm:ss" id="fechrefi" name="fechrefi" required type="text" value="<?php echo $fechabien ?>"></td>
                   <td><input type="text" class="form-control" id="krefi" value="<?php echo $dataRequisito['kilos'] ?>"  name="krefi" required></td>

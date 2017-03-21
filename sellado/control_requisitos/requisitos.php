@@ -99,7 +99,7 @@ sqlsrv_close($connSCPBD);
                   <b>Información:</b> por favor ingresar el numero de la orden / pedido  para realizar la consulta. 
               </div>
             <div class='col-md-4'>
-              <input type="text" placeholder="Ingresar Valor" class="form-control" id="recipient-name">
+              <input type="number" placeholder="Ingresar Valor" class="form-control" id="recipient-name">
               
             </div>
             <div class='col-md-2'>
