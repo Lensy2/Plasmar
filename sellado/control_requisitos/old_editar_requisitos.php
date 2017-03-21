@@ -4,14 +4,15 @@
   if (isset($_SESSION['usuario'])) {
     if (in_array('sellado', $_SESSION['paginas'])) {
   //Fin primera parte validacion de Pagina y Usuario
-    $archivo = 'control_req'; 
+    $archivo = 'control_req';    
+  
     include '../../includes/funciones.php';
     $enlace = rutaRecursos('segundo_nivel');
   
     if (isset($_GET['pedido'])){
       $pedido = $_GET['pedido'];
-    }
-     
+      $id = $_GET['id'];
+    } 
     include '../../includes/dbconfig.php';
     include '../../model/sellado.php';
     include '../../includes/sellado/header.php';
@@ -19,14 +20,9 @@
     require_once  '../../class/Sellado.php';
     $orden_sellado = new Sellado();
     $dataOrden = $orden_sellado->getOrdenProduccion($_GET['pedido']);
+    $dataRequisito = $orden_sellado->getDatosRequisito($id);
     
   ?>
-  <style media="screen" type="text/css">
-  .error{
-     border: 1px solid rgba(215, 0, 0, 0.75);
-     box-shadow:inset 0px 0px 2px 0px rgba(255, 0, 0, 0.75); 
-  } 
-  </style>
 <!-- =============================================== -->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -39,7 +35,7 @@
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Requisitos</a></li>
       <li><a href="#">Control De Requisitos</a></li>
-      <li class="active">Nuevo</li>
+      <li class="active">Editar</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -47,12 +43,12 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-fw fa-plus-circle"></i>Nuevo - Control De Requisitos</h3>
+        <h3 class="box-title"><i class="fa fa-pencil-square-o"></i>Editar</h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
         <?php
-          
+            $sellado = explode(', ', $dataRequisito['sellado']);  
              //Ruta Imgs Boca
             $rutaBoc = substr($dataOrden['FTIPOBOCA'], 2);
             $rutaBocLimpia = trim($rutaBoc); 
@@ -73,13 +69,13 @@
                   <th>Fecha Entrega</th>
                   <th>Cliente</th>
                   <th>NIT</th>
-                  <th>Descripción<input type="checkbox" class="chkplas" class="minimal" value="chk_descripcion" name="chksellado[]" ></th>
+                  <th>Descripción<input type="checkbox" class="chkplas" class="minimal" value="chk_descripcion" <?php if(in_array('chk_descripcion',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></th>
                   <th>Codigo</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="hidden" id="num_orden" value='<?php echo $dataOrden['PEDIDO']; ?>'><?php echo $dataOrden['ORDENNRO']; ?></td>
+                  <td><input type="hidden" name="num_orden" value='<?php echo $dataOrden['PEDIDO']; ?>'><?php echo $dataOrden['ORDENNRO']; ?></td>
                   <td><?php echo date_format($dataOrden['FHENTREGA'], 'd/m/y') ?></td>
                   <td><?php echo $dataOrden['NOMBRE']; ?></td>
                   <td><?php echo $dataOrden['NIT']; ?></td>
@@ -97,9 +93,9 @@
               <thead>
                 <tr>
                   <th>MEDIDAS DE LA BOLSA</th>
-                  <th>Kg PEDIDOS<input type="checkbox" class="chkplas" class="minimal" value="chk_kgpedidos" name="chksellado[]" ></th>
-                  <th>BOLSAS PEDIDAS<input type="checkbox" class="chkplas" class="minimal" value="chk_bolsas" name="chksellado[]" ></th>
-                  <th>VELOCIDAD SELLADO (UNI X MIN)<input type="checkbox" class="chkplas" class="minimal" value="chk_velocidad" name="chksellado[]" ></th>
+                  <th>Kg PEDIDOS<input type="checkbox" class="chkplas" class="minimal" value="chk_kgpedidos" <?php if(in_array('chk_kgpedidos',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></th>
+                  <th>BOLSAS PEDIDAS<input type="checkbox" class="chkplas" class="minimal" value="chk_bolsas" <?php if(in_array('chk_bolsas',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></th>
+                  <th>VELOCIDAD SELLADO (UNI X MIN)<input type="checkbox" class="chkplas" class="minimal" value="chk_velocidad"  <?php if(in_array('chk_velocidad',$sellado)){echo 'checked="checked"';}?>name="chksellado[]" ></th>
                   <th>BOCA POR</th>
                   <th>BOCA</th>
                 </tr>
@@ -121,7 +117,7 @@
           <br>
           <div class="row">
             <div class="col-md-4">
-              <h4 align="center">ANCHO (cms)<input type="checkbox" class="chkplas" class="minimal" value="chk_ancho" name="chkrefilado[]" ></h4>
+              <h4 align="center">ANCHO (cms)<input type="checkbox" class="chkplas" class="minimal" value="chk_ancho" <?php if(in_array('chk_ancho',$sellado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></h4>
               <div class="table-responsive">
                 <table class="table table-bordered">
                   <thead>
@@ -141,7 +137,7 @@
               </div><input class="form-control" id="ancho" required="" type="text">
             </div>
             <div class="col-md-4">
-              <h4 align="center">LARGO (cms)<input type="checkbox" class="chkplas" class="minimal" value="chk_largo" name="chksellado[]" ></h4>
+              <h4 align="center">LARGO (cms)<input type="checkbox" class="chkplas" class="minimal" value="chk_largo" <?php if(in_array('chk_largo',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></h4>
               <div class="table-responsive">
                 <table class="table table-bordered">
                   <thead>
@@ -222,8 +218,8 @@
                   <th>TIPO FUELLE</th>
                   <th>ANCHO SOLAPA</th>
                   <th>TIPO DE SOLAPA</th>
-                  <th>TIPO DE SELLADO<input type="checkbox" class="chkplas" class="minimal" value="chk_sellado" name="chksellado[]" ></th>
-                  <th>TIPO TROQUEL<input type="checkbox" class="chkplas" class="minimal" value="chk_troquel" name="chksellado[]" ></th>
+                  <th>TIPO DE SELLADO<input type="checkbox" class="chkplas" class="minimal" value="chk_sellado" <?php if(in_array('chk_sellado',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></th>
+                  <th>TIPO TROQUEL<input type="checkbox" class="chkplas" class="minimal" value="chk_troquel" <?php if(in_array('chk_troquel',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></th>
                 </tr>
               </thead>
               <tbody>
@@ -244,11 +240,11 @@
               <table class="table table-bordered">
                 <tbody>
                   <tr>
-                    <th>PERFORACIONES<input type="checkbox" class="chkplas" class="minimal" value="chk_perforaciones" name="chksellado[]" ></th>
+                    <th>PERFORACIONES<input type="checkbox" class="chkplas" class="minimal" value="chk_perforaciones" <?php if(in_array('chk_perforaciones',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></th>
                     <td><?php echo $dataOrden['PERFORAS']; ?></td>
-                    <th>DIAMETRO<input type="checkbox" class="chkplas" class="minimal" value="chk_diametro" name="chksellado[]" ></th>
+                    <th>DIAMETRO<input type="checkbox" class="chkplas" class="minimal" value="chk_diametro" <?php if(in_array('chk_diametro',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></th>
                     <td><?php echo $dataOrden['DIAMETRO']; ?></td>
-                    <th>EMPAQUES X PAQUETE<input type="checkbox" class="chkplas" class="minimal" value="chk_empaque" name="chksellado[]" ></th>
+                    <th>EMPAQUES X PAQUETE<input type="checkbox" class="chkplas" class="minimal" value="chk_empaque" <?php if(in_array('chk_empaque',$sellado)){echo 'checked="checked"';}?> name="chksellado[]" ></th>
                     <td><?php echo $dataOrden['EMPXPAQ']; ?></td>
                   </tr>
                   <tr>
@@ -306,7 +302,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                   <td><input class="form-control" data-format="dd/MM/yyyy hh:mm:ss" id="fechase" name="fechase" required="" type="text"></td>
+                    <td><input type="date" min=2014-01-01 class="form-control" name="fechrefi">   </td>
                     <td></td>
                     <td><?php echo $dataOrden['TIPOPED']; ?></td>
                     <td ><?php echo $dataOrden['MATERIAL']; ?></td>
@@ -368,92 +364,25 @@
           </div>
           <?php $plano = rutaPlano($dataOrden['CODIGO']);?>
           <div class="row">
-
             <div class="col-xs-4">
-            <label>Maquina sellado</label> <select class="form-control" id="maquina_sell" required="">
-                    <option value="1">
-                      1
-                    </option>
-                    <option value="2">
-                      2
-                    </option>
-                    <option value="3">
-                      3
-                    </option>
-                    <option value="4">
-                      4
-                    </option>
-                    <option value="5">
-                      5
-                    </option>
-                    <option value="6">
-                      6
-                    </option>
-                    <option value="7">
-                      7
-                    </option>
-                    <option value="8">
-                      8
-                    </option>
-                    <option value="9">
-                      9
-                    </option>
-                    <option value="10">
-                      10
-                    </option>
-                    <option value="11">
-                      11
-                    </option>
-                    <option value="12">
-                      12
-                    </option>
-                    <option value="13">
-                      13
-                    </option>
-                    <option value="14">
-                      14
-                    </option>
-                    <option value="15">
-                      15
-                    </option>
-                    <option value="16">
-                      16
-                    </option>
-                    <option value="17">
-                      17
-                    </option>
-                    <option value="18">
-                      18
-                    </option>
-                  </select>
-
               <b>Operario responsable</b>
               <i id="limpiar" style="cursor: pointer;" class="fa fa-times"></i><br><br>
               <input id="operarios" type="text" class="form-control" placeholder="Nombre Operario" name="operario" required> 
             </div>
-
-            </form>
-
             <div class="col-xs-9">
               <br>
-
               <div class="col-md-2">
-                  <button class="btn btn-block btn-primary" id="btnAprobar">Aprobar</button>
+                <input type="submit" class="btn btn-block btn-primary" name="aprob" value="Aprobar" >
               </div>
               <div class="col-md-2">
-                <button class="btn btn-block btn-primary" id="btnGuardar">Guardar</button>
+                <input type="submit" class="btn btn-block btn-primary" name="guarda" value="Guardar">
               </div>
-
               <div class="col-md-2">
-                <a class="btn btn-block btn-primary" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/sellado/control_requisitos/requisitos.php" style="text-decoration: none;">Cancelar</a>
+                <a class="btn btn-block btn-primary" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/db/sellado/control_requisitos/requisitos.php" style="text-decoration: none;">Cancelar</a>
               </div>
-
             </div>
-            <!-- Id del usuario que guarda el requisito -->
-            <input id="id_usuario" type="hidden" value="<?php echo $_SESSION['idusuario'] ?>"> 
-
           </div>
-        
+        </form>
       </div>
       <!-- /.box-body -->
     </div>
@@ -464,25 +393,6 @@
 <!-- /.content-wrapper -->
 <!-- =============================================== -->
 <div class="modal fade" id="modalPlano" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<<<<<<< HEAD
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-fw fa-warning"></i>Plano Mecanico</small></h4>
-        </div>
-        <div class="modal-body">
-          
-          <div class="row">
-      <img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;">
-  
-          </div>
-
-        </div>
-        <div class="modal-footer">
-          <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank"><button type="button" class="btn btn-primary">Abrir en nueva pestaña</button></a>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-=======
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -492,7 +402,6 @@
       <div class="modal-body">
         <div class="row">
           <img src="ftp://192.168.2.8/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;">
->>>>>>> 079fee3bdf20e2dc7a8f9fb88ff92e12e9805bc0
         </div>
       </div>
       <div class="modal-footer">

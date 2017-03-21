@@ -10,7 +10,7 @@
 	/*   ----- Fin Conexion a DB Plasmarsas -----   */
 	/* ----- Inicio Conexion a DB SCPBD ----- */
 	$serverName = "hestia"; //serverName\instanceName
-    $connectionInfo = array( "Database"=>"SCPBD", "UID"=>"scpbd", "PWD"=>"scpbd");
+    $connectionInfo = array( "Database"=>"SCPBD_DEV", "UID"=>"scpbd", "PWD"=>"scpbd");
 	$connSCPBD = sqlsrv_connect( $serverName, $connectionInfo);
 	if(!$connSCPBD){ die( print_r( sqlsrv_errors(), true));}
 	/* ----- Fin Conexion a DB SCPBD ----- */

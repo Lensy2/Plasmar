@@ -62,15 +62,23 @@ while($fila = sqlsrv_fetch_object($registros))
   echo "<tr>";
     echo "<td>".date_format($fila->fecha, 'm/d/Y g:i:s A')."</td>";
     echo "<td>".$fila->num_orden."</td>";
-     echo "<td>".$fila->nombre." ".$fila->apellido. "</td>";
+    echo "<td>".$fila->nombre." ".$fila->apellido. "</td>";
     echo "<td>".$fila->operario."</td>";
     echo "<td><span class='label label-success'>".$fila->estado."</span></td>";
-    echo "<td><i class='fa fa-fw fa-eye'></i><a href='detalles_requisitos.php?pedido=$fila->num_orden'>Detalles</a></td>";
+    echo "<td><div class='dropdown'>
+  <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
+    Opciones
+    <span class='caret'></span>
+  </button>
+  <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
+    <li><a href='detalles_requisitos.php?pedido=$fila->num_orden'><i class='fa fa-fw fa-eye'></i> Visualizar</a></li>
+    <li><a class='btnTerminarReq' data-id='".$fila->Idsellado_requisitos."'  href='#'><i class='fa fa-exclamation-circle'></i> Terminar</a></li>
+  </ul>
+</div></td>";
   echo "</tr>";
 }
 sqlsrv_close($connSCPBD);
 ?>
-
     </tbody>
 </table>
 </div><!-- /.box-body -->

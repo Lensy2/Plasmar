@@ -151,16 +151,28 @@ function rutaBoca($query){
 
   $nomBoc = $query;
   switch ($nomBoc) {
-    case 'hestia\Ofimatica\plasmar\producci\bocadebajo.bmp':
+    case 'hestia\ofimatica\plasmar\producci\bocadebajo.bmp':
       $nomBoc = 'bocadebajo.bmp';
       break;
-    case 'hestia\Ofimatica\plasmar\producci\bocaderecha.bmp':
+    case 'hestia\ofimatica\plasmar\producci\bocaderecha.bmp':
       $nomBoc = 'bocaderecha.bmp';
       break;
-    case 'hestia\Ofimatica\plasmar\producci\bocaencima.bmp':
+    case 'hestia\ofimatica\plasmar\producci\bocaencima.bmp':
       $nomBoc = 'bocaencima.bmp';
       break;
-    case 'hestia\Ofimatica\plasmar\producci\bocaizquierda.bmp':
+    case 'hestia\ofimatica\plasmar\producci\bocaizquierda.bmp':
+      $nomBoc = 'bocaizquierda.bmp';
+      break;
+      case 'hestia\ofimatica\apps\producci\bocadebajo.bmp':
+      $nomBoc = 'bocadebajo.bmp';
+      break;
+    case 'hestia\ofimatica\apps\producci\bocaderecha.bmp':
+      $nomBoc = 'bocaderecha.bmp';
+      break;
+    case 'hestia\ofimatica\apps\producci\bocaencima.bmp':
+      $nomBoc = 'bocaencima.bmp';
+      break;
+    case 'hestia\ofimatica\apps\producci\bocaizquierda.bmp':
       $nomBoc = 'bocaizquierda.bmp';
       break;
 

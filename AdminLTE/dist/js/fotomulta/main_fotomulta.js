@@ -161,7 +161,7 @@ $(function () {
       var txttipo_proceso = $('#tipo_proceso :selected').text();
 
       $( ".auto_causas" ).select2({
-        placeholder: "Seleccionar una Causa",
+        placeholder: "Filtre la causa de la inconformidad",
           ajax: {
               url: "listaInconformidades.php?t=3&tipo_inc="+txttipo_inconf+"&proceso="+txttipo_proceso,
               dataType: 'json',

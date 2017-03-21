@@ -15,6 +15,14 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="<?php echo $enlace;?>/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script src="<?php echo $enlace;?>/jquery-ui/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript">
+        $('#fechase').datetimepicker({
+            dateFormat: "dd-mm-yy"
+        });
+
+
+    </script>
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
@@ -46,6 +54,8 @@
     <script src="<?php echo $enlace;?>/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <!-- FastClick -->
     <script src="<?php echo $enlace;?>/plugins/fastclick/fastclick.min.js"></script>
+    <!--- Sweeralert --> 
+    <script src="<?php echo $enlace;?>/plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     <script src="<?php echo $enlace;?>/plugins/iCheck/icheck.min.js"></script>
        <!--- FileInput - Subir Imagenes--> 
     <script src="<?php echo $enlace;?>/plugins/fileInput/js/fileinput.min.js" type="text/javascript"></script>
