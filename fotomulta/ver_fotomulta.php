@@ -60,7 +60,14 @@ $numElementosReal = $numElementos - 1;
                         <th>Referencia</th>
                       </tr>
                       <tr>
-                      <td><?php echo  date_format($fila->fecha_fotomulta,'d:m:Y h:m') ?></td> 
+                      <td><?php 
+                      if ($fila->fecha_fotomulta == '') {
+                        echo  date_format($fila->fecha,'d:m:Y h:m') ;
+                      }else{
+                        echo  date_format($fila->fecha_fotomulta,'d:m:Y h:m') ;
+                      }
+                      
+                      ?></td> 
                         <td><?php echo "<span class='label label-primary' style='font-size:13px'>".$fila->num_orden."</span>" ?></td>
                         <td><?php echo $fila->num_rollo ?></td> 
                         <td><?php echo $fila->cliente ?></td>  
@@ -110,12 +117,15 @@ $numElementosReal = $numElementos - 1;
                       
                     </tbody>
                   </table>
-                  <?php            
-               for($i=0; $i<=$numElementosReal; $i++){
-                //saco el valor de cada elemento
-                echo "<a href='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$separarFotos[$i]' target='blank'><img width='200px' src='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$separarFotos[$i]' /></a>" ;
-                echo "<br>";
-              }      
+                  <?php
+                  foreach ($separarFotos as $key => $value) {
+                    if ($value != '') {
+                      echo "<a href='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$value.jpg' target='blank'><img width='200px' src='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$value.jpg' /></a>";
+                    }
+                    
+                    
+                  }
+   
            
            ?>
       </div><!-- /.box-body -->
