@@ -1,4 +1,7 @@
 $(function () { 
+
+  $('#datatable-fotomultas').DataTable();
+
   /*
   *Enlaces del menu superior
   */
