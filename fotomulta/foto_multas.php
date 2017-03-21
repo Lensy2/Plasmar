@@ -43,7 +43,7 @@ $enlace = rutaRecursos('primer_nivel');
               $registros = sqlsrv_query($connSCPBD, $fotom_term);
             ?>
 
-            <table id="c_requisitos" class="table table-bordered table-striped">
+            <table id="datatable-fotomultas" class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>Evento</th>
