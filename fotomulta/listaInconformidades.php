@@ -43,11 +43,11 @@ switch ($tipo) {
 		// Make sure we have a result
 	if(count($datosCausas) > 0){
 	   foreach ($datosCausas as $key => $value) {
-		$data[] = array('id' => $value['Id'], 'text' => $value['Causa']);			 	
+		$data[] = array('id' => $value['Id'], 'text' => utf8_encode($value['Causa']) );			 	
 	   } 
-	} else {
+	}  /*else {
 	   $data[] = array('id' => '0', 'text' => 'No se encontraron causas');
-	}
+	}*/
 	// return the result in json
 	echo json_encode($data);
 		break;
