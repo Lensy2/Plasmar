@@ -250,12 +250,12 @@ if (isset($_SESSION['usuario'])) {
             <br>
             <?php 
               //Ruta Imgs Montaje
-              $rutaMon = substr($dataOrden['FEMBOBINA'], 2);
+              $rutaMon = $dataOrden['FEMBOBINA'];
               $rutaMonLimpia = trim($rutaMon);
               $imgFinal = strtolower($rutaMonLimpia);
               $numMon = rutaMontaje($imgFinal);
              
-              $imgMontaje = "<img src='ftp://192.168.0.19/Plasmar/Producci/$numMon'/>";
+              $imgMontaje = "<img src='$numMon'/>";
                          ?>
 
             <div class="col-md-12">
@@ -402,10 +402,13 @@ if (isset($_SESSION['usuario'])) {
           <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-fw fa-warning"></i>Plano Mecanico</h4>
         </div>
         <div class="modal-body">
-          <div class="row"><img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG%20PRODUCCION/%3C?php%20echo%20$plano%20?%3E.jpg" style="max-width: 100%;"></div>
+          <div class="row">
+          <img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;">
         </div>
         <div class="modal-footer">
-          <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG%20PRODUCCION/%3C?php%20echo%20$plano%20?%3E.jpg" target="blank"><button class="btn btn-primary" type="button">Abrir en nueva pestaña</button></a> <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
+          <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank">
+          <button class="btn btn-primary" type="button">Abrir en nueva pestaña</button></a> 
+          <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
         </div>
       </div>
     </div>
