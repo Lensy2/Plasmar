@@ -42,7 +42,6 @@ if (isset($_SESSION['usuario'])) {
 	            <div class="box-body">
 	  				<!--<form id="frmInc" action="procesar_fotomulta.php" method="post" accept-charset="utf-8">-->
         <div class="modal-body">        
-          <h4 align="center"><b>Formulario - Foto Multa</b></h4>
           <!-- ID usuario -->
           <input type="hidden" id="id_usuario" value="<?php echo $_SESSION['idusuario'] ?>">          
             <label>Fecha de foto multa</label>
