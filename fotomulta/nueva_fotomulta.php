@@ -53,12 +53,17 @@ if (isset($_SESSION['usuario'])) {
             </div>
                        
             <label>Tipo de Inconformidad</label>
-            <select class="auto_tipo form-control" id="tipo_inconf" name="tipo_inconf" required></select>
+            <!--<select class="auto_tipo form-control" id="tipo_inconf" name="tipo_inconf" required>-->
+            <select class="form-control" id="tipo_inconf" name="tipo_inconf" required>
+              <option value="EN TRANSITO">EN TRANSITO</option>
+              <option value="NO CONFORME">NO CONFORME</option>
+              <option value="INCUMPLIMIENTO AL S.G.I">INCUMPLIMIENTO AL S.G.I</option>
+            </select>
 
             <label>Tipo de Proceso o área</label>
             <select class="auto_procesos form-control" id="tipo_proceso" name="tipo_proceso" required></select>
 
-             <label>Causa:</label>
+            <label>Causa:</label>
             <select class="auto_causas form-control" name="causa" id="causa" required></select> 
 
             <label id="lbl_pedido">Pedido #</label>
