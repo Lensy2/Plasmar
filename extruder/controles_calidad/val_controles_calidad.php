@@ -29,7 +29,7 @@ $registrosRollos = sqlsrv_query($connPlas, $numRollos);
 
 //$fila2 = sqlsrv_fetch_array($registrosRollos);
 
-
+$counter=0;
 while ( $fila = sqlsrv_fetch_object($registrosRollos)) 
 {	
 	$counter++;
