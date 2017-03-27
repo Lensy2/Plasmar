@@ -425,7 +425,8 @@ echo "<br>";
         </div>
       </div>
       <div class="modal-footer">
-        <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank"><button type="button" class="btn btn-primary">Abrir en nueva pestaña</button></a>
+        <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank">
+        <button type="button" class="btn btn-primary">Abrir en nueva pestaña</button></a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
