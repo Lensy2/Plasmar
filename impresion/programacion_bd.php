@@ -73,7 +73,7 @@ while($fila = sqlsrv_fetch_object($registros))
     echo "<td>".$fila->PRODUCTO."</td>"; 
     echo "<td>".$fila->DESCRIPCIO."</td>"; 
     echo "<td><i class='fa fa-fw fa-plus-circle'></i><a href='#' data-toggle='modal' data-target='#modalProgimp' data-whatever='$fila->OrdenNro'> Nuevo Premontaje</a></td>";
-    echo "<td><i class='fa fa-fw fa-eye'></i><a href='detalles_apro.php?pedido=$fila->OrdenNro'>Detalles</a></td>";
+    echo "<td><i class='fa fa-fw fa-eye'></i><a href='../impresion/premontajes/detalles_apro.php?pedido=$fila->OrdenNro'>Detalles</a></td>";
     
     echo "</tr>";
 }
