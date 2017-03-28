@@ -63,7 +63,7 @@ while($fila = sqlsrv_fetch_object($registros))
 {
   echo "<tr>";
     echo "<td>".$fila->Idrefilado_requisitos."</td>";
-    echo "<td>".date_format($fila->fecha, 'm/d/Y g:i:s A')."</td>";
+    echo "<td>".date_format($fila->fecha, 'd/m/Y g:i:s A')."</td>";
     echo "<td>".$fila->consecutivo."</td>";
     echo "<td>".$fila->num_orden."</td>";
     echo "<td>".$fila->nombre." ".$fila->apellido. "</td>";
