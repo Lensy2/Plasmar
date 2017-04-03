@@ -60,7 +60,7 @@
           $rutaBocLimpia = trim($rutaBoc); 
           $imgFinal = strtolower($rutaBocLimpia);
           $nomBoc = rutaBoca($imgFinal);
-          $imgBoca = "<img src='ftp://hestia/Plasmar/Producci/$nomBoc'/>";
+          $imgBoca = "<img src='$nomBoc'/>";
           
           ?> 
         <!--- Descripcion General Orden de Laminacion -->
@@ -470,7 +470,6 @@
 <!-- /.content-wrapper -->
 <!-- =============================================== -->
 <div class="modal fade" id="modalPlano" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-<<<<<<< HEAD
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

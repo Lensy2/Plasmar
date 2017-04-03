@@ -58,8 +58,7 @@
             $rutaBocLimpia = trim($rutaBoc); 
             $imgFinal = strtolower($rutaBocLimpia);
             $nomBoc = rutaBoca($imgFinal);
-            $imgBoca = "<img src='ftp://hestia/Plasmar/Producci/$nomBoc'/>";
-          
+            $imgBoca = "<img src='$nomBoc'/>";
           ?> 
         <!--- Descripcion General Orden de Laminacion -->
         <h3 align="center">Descripción General</h3>

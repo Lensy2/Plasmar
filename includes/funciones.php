@@ -152,28 +152,28 @@ function rutaBoca($query){
   $nomBoc = $query;
   switch ($nomBoc) {
     case 'hestia\ofimatica\plasmar\producci\bocadebajo.bmp':
-      $nomBoc = 'bocadebajo.bmp';
+      $nomBoc = 'ftp://192.168.0.19/apps/producci/bocadebajo.bmp';
       break;
     case 'hestia\ofimatica\plasmar\producci\bocaderecha.bmp':
-      $nomBoc = 'bocaderecha.bmp';
+      $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaderecha.bmp';
       break;
     case 'hestia\ofimatica\plasmar\producci\bocaencima.bmp':
-      $nomBoc = 'bocaencima.bmp';
+      $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaencima.bmp';
       break;
     case 'hestia\ofimatica\plasmar\producci\bocaizquierda.bmp':
-      $nomBoc = 'bocaizquierda.bmp';
+      $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaizquierda.bmp';
       break;
       case 'hestia\ofimatica\apps\producci\bocadebajo.bmp':
-      $nomBoc = 'bocadebajo.bmp';
+      $nomBoc = 'ftp://192.168.0.19/apps/producci/bocadebajo.bmp';
       break;
     case 'hestia\ofimatica\apps\producci\bocaderecha.bmp':
-      $nomBoc = 'bocaderecha.bmp';
+      $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaderecha.bmp';
       break;
     case 'hestia\ofimatica\apps\producci\bocaencima.bmp':
-      $nomBoc = 'bocaencima.bmp';
+      $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaencima.bmp';
       break;
     case 'hestia\ofimatica\apps\producci\bocaizquierda.bmp':
-      $nomBoc = 'bocaizquierda.bmp';
+      $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaizquierda.bmp';
       break;
 
     }

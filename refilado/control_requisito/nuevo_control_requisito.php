@@ -254,14 +254,8 @@ if (isset($_SESSION['usuario'])) {
               $rutaMonLimpia = trim($rutaMon);
               $imgFinal = strtolower($rutaMonLimpia);
               $numMon = rutaMontaje($imgFinal);
-             
-<<<<<<< HEAD
-              $imgMontaje = "<img src='$numMon'/>";
-                         ?>
-=======
-              $imgMontaje = "<img src='$numMon'/>";?>
->>>>>>> a9e68210a767d5b7cebb8dfcc6b133fb39388f1e
-
+             $imgMontaje = "<img src='$numMon'/>";
+            ?>
             <div class="col-md-12">
               <div class="table-responsive">
                 <table class="table table-bordered">
@@ -398,32 +392,27 @@ if (isset($_SESSION['usuario'])) {
     </section><!-- /.content -->
   </div><!-- /.content-wrapper -->
   <!-- =============================================== -->
-  <div aria-labelledby="exampleModalLabel" class="modal fade" id="modalPlano" role="dialog" tabindex="-1">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-fw fa-warning"></i>Plano Mecanico</h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-<<<<<<< HEAD
+<div class="modal fade" id="modalPlano" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-fw fa-warning"></i>Plano Mecanico</small></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
           <img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;">
         </div>
-        <div class="modal-footer">
-          <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank">
-          <button class="btn btn-primary" type="button">Abrir en nueva pestaña</button></a> 
-          <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
-=======
-          <img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;"></div>
-        </div>
-        <div class="modal-footer">
-          <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank"><button class="btn btn-primary" type="button">Abrir en nueva pestaña</button></a> <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
->>>>>>> a9e68210a767d5b7cebb8dfcc6b133fb39388f1e
-        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank">
+        <button type="button" class="btn btn-primary">Abrir en nueva pestaña</button></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
-  </div><?php include '../../includes/refilado/footer.php'; 
+  </div>
+</div>
+  <?php include '../../includes/refilado/footer.php'; 
   //Incio segunda parte validacion de Pagina y Usuario
     }else{
       include '../../autenticacion/restrin.php';
