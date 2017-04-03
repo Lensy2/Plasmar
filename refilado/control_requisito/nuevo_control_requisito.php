@@ -255,8 +255,12 @@ if (isset($_SESSION['usuario'])) {
               $imgFinal = strtolower($rutaMonLimpia);
               $numMon = rutaMontaje($imgFinal);
              
+<<<<<<< HEAD
               $imgMontaje = "<img src='$numMon'/>";
                          ?>
+=======
+              $imgMontaje = "<img src='$numMon'/>";?>
+>>>>>>> a9e68210a767d5b7cebb8dfcc6b133fb39388f1e
 
             <div class="col-md-12">
               <div class="table-responsive">
@@ -320,12 +324,12 @@ if (isset($_SESSION['usuario'])) {
                     </tbody>
                   </table>
                 </div>
-              </div><?php 
+              </div>
+              <?php 
 
               $plano = rutaPlano($dataOrden['CODIGO']);
 
-              ?><?php 
-                          ?>
+              ?>
               <div class="row">
                 <div class="col-xs-4">
                   <label>Maquina refiladora</label> <select class="form-control" id="maquina_ref" required="">
@@ -379,7 +383,7 @@ if (isset($_SESSION['usuario'])) {
                   <button class="btn btn-block btn-primary" id="btnGuardar">Guardar</button>
                   </div>
                   <div class="col-md-2">
-                    <a class="btn btn-block btn-primary" href="http://%3C?php%20echo%20$_SERVER['SERVER_NAME'];%20?%3E/apps/impresion/premontajes/premontajes.php" style="text-decoration: none;">Cancelar</a>
+                    <a class="btn btn-block btn-primary" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/impresion/premontajes/premontajes.php" style="text-decoration: none;">Cancelar</a>
                   </div>
                 </div>
               </div>
@@ -403,12 +407,19 @@ if (isset($_SESSION['usuario'])) {
         </div>
         <div class="modal-body">
           <div class="row">
+<<<<<<< HEAD
           <img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;">
         </div>
         <div class="modal-footer">
           <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank">
           <button class="btn btn-primary" type="button">Abrir en nueva pestaña</button></a> 
           <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
+=======
+          <img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;"></div>
+        </div>
+        <div class="modal-footer">
+          <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank"><button class="btn btn-primary" type="button">Abrir en nueva pestaña</button></a> <button class="btn btn-default" data-dismiss="modal" type="button">Cancelar</button>
+>>>>>>> a9e68210a767d5b7cebb8dfcc6b133fb39388f1e
         </div>
       </div>
     </div>

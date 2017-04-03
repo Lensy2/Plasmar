@@ -54,7 +54,7 @@ if (isset($_SESSION['usuario'])) {
             <th>Usuario</th>
             <th>Operario responsable</th>
             <th>Mezcla #</th> 
-            <th>Observación</th>           
+            <th>Descripción</th>
             <th>Estado</th>
             <th>Accion</th>
             <th>Ver</th>

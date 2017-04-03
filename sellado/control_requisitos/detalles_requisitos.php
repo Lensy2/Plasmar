@@ -393,8 +393,7 @@ if (isset($_SESSION['usuario'])) {
                                     
                     </table> 
                 </div>
-              </div>
-                         
+              </div>         
             <?php
             }
             sqlsrv_close( $connPlas );
