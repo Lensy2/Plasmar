@@ -4,7 +4,7 @@
   if (isset($_SESSION['usuario'])) {
   //Fin primera parte validacion de Pagina y Usuario
   
-  $archivo = 'cliente';
+  $archivo = 'incumplimiento';
   include '../../includes/dbconfig.php';
   include '../../model/laminacion.php';
   include '../../includes/funciones.php';
@@ -46,6 +46,8 @@
               <div class="row">
                 <div class="col-md-12">
                 	<button type="button" class="btn btn-primary" id="btnGridPorProceso"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Generar</button>
+                  <a href="export_inc_proceso.php"> <button class="btn btn-success">Exportar <i class="fa fa-file-excel-o" aria-hidden="true"></i></button></a>
+                  
                   <div id="gridPorProceso"></div> 
                 </div>
                 
@@ -56,6 +58,7 @@
               <div class="row">
                 <div class="col-md-12">
                  <button type="button" class="btn btn-primary" id="btnGridPorPersona"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Generar</button>
+                 <a href="export_inc_persona.php"> <button class="btn btn-success">Exportar <i class="fa fa-file-excel-o" aria-hidden="true"></i></button></a>
                   <div id="gridPorPersona"></div> 
               	</div>
               </div>               
@@ -65,6 +68,7 @@
               <div class="row">
                 <div class="col-md-12">
                    <button type="button" class="btn btn-primary" id="btnGridPorAfecta"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Generar</button>
+                   <a href="export_inc_sistema.php"> <button class="btn btn-success">Exportar <i class="fa fa-file-excel-o" aria-hidden="true"></i></button></a>
                   <div id="gridPorAfecta"></div> 
               	</div>
               </div>               

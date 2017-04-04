@@ -1,4 +1,8 @@
-$(function () {               
+$(function () { 
+
+//DataTable informe por disposicion final
+$('#datatable-dispofinal').DataTable();
+
   $("#ver-admin").click(function() {
     var a = $(".val-admin").val();
     window.location = "http://"+a+"/apps/administracion/dashboard.php";
@@ -21,7 +25,7 @@ $(function () {
             data: dataString,
             success: function(data) {
                   $( "#grafico" ).show( "slow", function() {
-                        alert( "Informe Generado." );
+                        //alert( "Informe Generado." );
                     });
 
                 var ctx = document.getElementById("myChart");
@@ -78,7 +82,7 @@ $(function () {
             data: dataString,
             success: function(data) {
                 $( "#grafico" ).show( "slow", function() {
-                        alert( "Informe Generado." );
+                       // alert( "Informe Generado." );
                     });
 
                 var ctx = document.getElementById("myChart");

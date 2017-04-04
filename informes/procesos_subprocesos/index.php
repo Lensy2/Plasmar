@@ -55,7 +55,7 @@ if (isset($_SESSION['usuario'])) {
                <h4 class="box-title"><i class="fa fa-area-chart" align="center"></i><b>Inconformidades por Procesos y Sub Procesos</b></h4> 
                  <div class="col-md-6" id="grafico" style="display:none">
                   <canvas id='myChart' width='500' height='500'></canvas>
-                  <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Informe detallado</button>
+                  <a href="info_detallado.php"><button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Informe detallado</button></a>
                 </div>
           </div>         
           </div>

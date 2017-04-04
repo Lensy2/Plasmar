@@ -182,7 +182,7 @@
               </li>
 
               <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="ver-infor"><i class="fa fa-fw fa-bar-chart" "></i>Informes
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="ver-infor"><i class="fa fa-fw fa-bar-chart" ></i>Informes
                   <input type="hidden" class="val-infor" value="<?php  echo $_SERVER['SERVER_NAME'];?>" />
                 </a>
               </li>
@@ -294,7 +294,7 @@
               </a>
             </li>
 
-            <li <?php if ($archivo == 'operario') {echo "class='active'";}?>>              
+            <li <?php if ($archivo == 'incumplimiento') {echo "class='active'";}?>>              
               <a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/apps/informes/incumplimiento">
                 <i class="ion ion-android-walk"></i> <span>Incumplimiento al S.G.I</span>
               </a>

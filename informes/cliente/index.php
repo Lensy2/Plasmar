@@ -86,7 +86,7 @@ if (isset($_SESSION['usuario'])) {
           <div class="row">
               <div class="col-md-6" id="grafico">
               <canvas id='myChart2' width='400' height='400'></canvas>
-                <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Informe detallado</button>
+                <a href="info_detallado.php"><button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Informe detallado</button></a>
             </div>
           </div><!-- /.row -->          
           </div>

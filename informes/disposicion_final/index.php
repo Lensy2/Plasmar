@@ -9,7 +9,6 @@ if (isset($_SESSION['usuario'])) {
   include '../../includes/funciones.php';
   $enlace = rutaRecursos('segundo_nivel');
   include '../../includes/informes/header.php';
-  
 ?>
 
       <!-- =============================================== -->

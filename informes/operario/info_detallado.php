@@ -5,7 +5,7 @@ session_start();
 if (isset($_SESSION['usuario'])) {
 
 //Fin primera parte validacion de Pagina y Usuario
-  $archivo = 'dispo_final';  
+  $archivo = 'operario';  
 
   include '../../includes/dbconfig.php';
   include '../../includes/funciones.php';
@@ -19,11 +19,11 @@ if (isset($_SESSION['usuario'])) {
         <section class="content-header">
           <h1>
             Informes
-            <small>Inconformidades por Disposición Final</small>
+            <small>Inconformidades Top 10 Operario</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Informes</a></li>
-            <li class="active">Inconformidades por Disposición Final</li>
+            <li class="active">Inconformidades Top 10 Operario</li>
           </ol>
         </section>
 
@@ -46,7 +46,7 @@ if (isset($_SESSION['usuario'])) {
         </div><!-- /.box-header -->
 
          <?php 
-            $query = "SELECT * FROM VReporte_Dispo_Final";
+            $query = "SELECT * FROM VReporte_Top10_Operarios";
         ?>
             <div class="box-body">
             <?php
@@ -56,32 +56,16 @@ if (isset($_SESSION['usuario'])) {
             <table id="datatable-dispofinal" class="table table-bordered table-striped" >
     <thead>
         <tr>
-            <th>Fecha de Ingreso</th>
-            <th>Orden #</th>
-            <th>Cliente</th>
-            <th>Operario responsable</th>      
-            <th>Tipo Inconformidad</th>
-            <th>Referencia</th>
-            <th>Disposición Final</th>
+            <th>Operario responsable</th> 
+            <th>Total</th>
         </tr>
     </thead>
     <tbody>
       <?php
 while($fila = sqlsrv_fetch_object($registros))
 {
-  echo "<tr>";
-    if (isset($fila->fecha)) {
-      echo "<td>".date_format($fila->fecha, 'd/m/Y H:i:s')."</td>";   
-    }else{
-      echo "<td>NULL</td>";   
-    }
-     
-    echo "<td>".$fila->num_orden."</td>";
-    echo "<td>".$fila->cliente."</td>";
     echo "<td>".$fila->operario_res."</td>";
-    echo "<td><span class='label label-warning'>".$fila->tipo_inconf."</span></td>";
-    echo "<td>".$fila->referencia."</td>";
-    echo "<td>".$fila->dispo_final."</td>";
+    echo "<td>".$fila->Total."</td>";
   echo "</tr>";
 }
 sqlsrv_close($connSCPBD);

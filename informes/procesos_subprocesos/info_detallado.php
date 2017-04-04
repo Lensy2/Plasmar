@@ -5,7 +5,7 @@ session_start();
 if (isset($_SESSION['usuario'])) {
 
 //Fin primera parte validacion de Pagina y Usuario
-  $archivo = 'dispo_final';  
+  $archivo = 'procesos_sub';  
 
   include '../../includes/dbconfig.php';
   include '../../includes/funciones.php';
@@ -19,11 +19,11 @@ if (isset($_SESSION['usuario'])) {
         <section class="content-header">
           <h1>
             Informes
-            <small>Inconformidades por Disposición Final</small>
+            <small>Inconformidades por Procesos y Subprocesos</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Informes</a></li>
-            <li class="active">Inconformidades por Disposición Final</li>
+            <li class="active">Inconformidades por Procesos y Subprocesos</li>
           </ol>
         </section>
 
@@ -46,7 +46,7 @@ if (isset($_SESSION['usuario'])) {
         </div><!-- /.box-header -->
 
          <?php 
-            $query = "SELECT * FROM VReporte_Dispo_Final";
+            $query = "SELECT * FROM VReporte_Procesos_Subprocesos";
         ?>
             <div class="box-body">
             <?php
@@ -62,7 +62,7 @@ if (isset($_SESSION['usuario'])) {
             <th>Operario responsable</th>      
             <th>Tipo Inconformidad</th>
             <th>Referencia</th>
-            <th>Disposición Final</th>
+            <th>Proceso</th>
         </tr>
     </thead>
     <tbody>
@@ -81,7 +81,7 @@ while($fila = sqlsrv_fetch_object($registros))
     echo "<td>".$fila->operario_res."</td>";
     echo "<td><span class='label label-warning'>".$fila->tipo_inconf."</span></td>";
     echo "<td>".$fila->referencia."</td>";
-    echo "<td>".$fila->dispo_final."</td>";
+    echo "<td>".$fila->tipo_proceso."</td>";
   echo "</tr>";
 }
 sqlsrv_close($connSCPBD);
