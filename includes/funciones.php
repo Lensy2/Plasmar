@@ -24,23 +24,23 @@ function tipoPedidoEtiqueta($var){
 function rutaCyrel($query){
   $nomCyrel = $query;
   switch ($nomCyrel) {
-    case 'hestia\ofimatica\plasmar\producci\cirel0.bmp':
+    case 'hestia\ofimatica\apps\producci\cirel0.bmp':
       $numCyrel = 'cirel0.bmp';
       break;
     
-    case 'hestia\ofimatica\plasmar\producci\cirel1.bmp':
+    case 'hestia\ofimatica\apps\producci\cirel1.bmp':
       $numCyrel = 'cirel1.bmp';
       break;
 
-    case 'hestia\ofimatica\plasmar\producci\cirel2.bmp':
+    case 'hestia\ofimatica\apps\producci\cirel2.bmp':
       $numCyrel = 'cirel2.bmp';
       break;
 
-    case 'hestia\ofimatica\plasmar\producci\cirel3.bmp':
+    case 'hestia\ofimatica\apps\producci\cirel3.bmp':
       $numCyrel = 'cirel3.bmp';
       break;
 
-    case 'hestia\ofimatica\plasmar\producci\cirel4.bmp':
+    case 'hestia\ofimatica\apps\producci\cirel4.bmp':
       $numCyrel = 'cirel4.bmp';
       break;  
   }
@@ -50,58 +50,58 @@ function rutaCyrel($query){
 function rutaBobina($query){
   $nomBob = $query;
   switch ($nomBob) {
-    case 'hestia\ofimatica\plasmar\producci\impresio0.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio0.bmp':
       $numBob = 'impresio0.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio1.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio1.bmp':
       $numBob = 'impresio1.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio2.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio2.bmp':
       $numBob = 'impresio2.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio3.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio3.bmp':
       $numBob = 'impresio3.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio4.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio4.bmp':
       $numBob = 'impresio4.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio5.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio5.bmp':
       $numBob = 'impresio5.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio6.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio6.bmp':
       $numBob = 'impresio6.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio7.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio7.bmp':
       $numBob = 'impresio7.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio8.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio8.bmp':
       $numBob = 'impresio8.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio9.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio9.bmp':
       $numBob = 'impresio9.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio10.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio10.bmp':
       $numBob = 'impresio10.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio11.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio11.bmp':
       $numBob = 'impresio11.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio12.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio12.bmp':
       $numBob = 'impresio12.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio13.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio13.bmp':
       $numBob = 'impresio13.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio14.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio14.bmp':
       $numBob = 'impresio14.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio15.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio15.bmp':
       $numBob = 'impresio15.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio16.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio16.bmp':
       $numBob = 'impresio16.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\impresio99.bmp':
+    case 'hestia\ofimatica\apps\producci\impresio99.bmp':
       $numBob = 'impresio99.bmp';
       break; 
   }
@@ -112,35 +112,34 @@ function rutaMontaje($query){
 
   $numMont = $query;
   switch ($numMont) {
-    case 'hestia\ofimatica\plasmar\producci\refilado0.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado0.bmp':
       $numMont = 'refilado0.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\refilado1.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado1.bmp':
       $numMont = 'refilado1.bmp';
       break;
-
-    case 'hestia\ofimatica\plasmar\producci\refilado2.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado2.bmp':
       $numMont = 'refilado2.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\refilado3.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado3.bmp':
       $numMont = 'refilado3.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\refilado4.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado4.bmp':
       $numMont = 'refilado4.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\refilado5.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado5.bmp':
       $numMont = 'refilado5.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\refilado6.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado6.bmp':
       $numMont = 'refilado6.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\refilado7.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado7.bmp':
       $numMont = 'refilado7.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\refilado8.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado8.bmp':
       $numMont = 'refilado8.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\refilado888.bmp':
+    case 'hestia\ofimatica\apps\producci\refilado888.bmp':
       $numMont = 'refilado888.bmp';
       break;
     }
@@ -151,16 +150,16 @@ function rutaBoca($query){
 
   $nomBoc = $query;
   switch ($nomBoc) {
-    case 'hestia\ofimatica\plasmar\producci\bocadebajo.bmp':
+    case 'hestia\ofimatica\apps\producci\bocadebajo.bmp':
       $nomBoc = 'ftp://192.168.0.19/apps/producci/bocadebajo.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\bocaderecha.bmp':
+    case 'hestia\ofimatica\apps\producci\bocaderecha.bmp':
       $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaderecha.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\bocaencima.bmp':
+    case 'hestia\ofimatica\apps\producci\bocaencima.bmp':
       $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaencima.bmp';
       break;
-    case 'hestia\ofimatica\plasmar\producci\bocaizquierda.bmp':
+    case 'hestia\ofimatica\apps\producci\bocaizquierda.bmp':
       $nomBoc = 'ftp://192.168.0.19/apps/producci/bocaizquierda.bmp';
       break;
       case 'hestia\ofimatica\apps\producci\bocadebajo.bmp':
@@ -183,7 +182,7 @@ return $nomBoc;
 function rutaPlano($query)
 {
   $planoMec = trim($query);
-  $nombre_fichero = 'ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/'.$planoMec.'.jpg';
+  $nombre_fichero = 'ftp://192.168.0.124/Pruebas/JPG PRODUCCION/'.$planoMec.'.jpg';
 
   if (file_exists($nombre_fichero)) {
     echo "<a href='#' class='btn btn-app' data-toggle='modal' data-target='#modalPlano' >

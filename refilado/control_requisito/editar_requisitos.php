@@ -421,11 +421,11 @@ echo "<br>";
       </div>
       <div class="modal-body">
         <div class="row">
-          <img src="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;">
+          <img src="ftp://192.168.0.124/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" style="max-width: 100%;">
         </div>
       </div>
       <div class="modal-footer">
-        <a href="ftp://192.168.0.5/PlanoMecanico/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank">
+        <a href="ftp://192.168.0.124/Pruebas/JPG PRODUCCION/<?php echo $plano ?>.jpg" target="blank">
         <button type="button" class="btn btn-primary">Abrir en nueva pestaña</button></a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
       </div>

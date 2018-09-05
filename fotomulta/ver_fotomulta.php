@@ -120,7 +120,7 @@ $numElementosReal = $numElementos - 1;
                   <?php
                   foreach ($separarFotos as $key => $value) {
                     if ($value != '') {
-                      echo "<a href='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$value.jpg' target='blank'><img width='200px' src='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$value.jpg' /></a>";
+                      echo "<a href='ftp://192.168.0.128/NAS_Public/SCPBD/foto_multas/$value.jpg' target='blank'><img width='200px' src='ftp://192.168.2.8/NAS_Public/SCPBD/foto_multas/$value.jpg' /></a>";
                     }
                     
                     

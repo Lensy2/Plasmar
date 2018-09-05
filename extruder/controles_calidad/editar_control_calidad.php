@@ -344,13 +344,18 @@ $fila = sqlsrv_fetch_object($registrosExt);
             </div>
             
 
-            <div class="row">
+            <div class="row" >
               <div class="col-md-6">
                    <div class="col-md-10">
                       <h5><b>Observación</b></h5>                      
                       <textarea class="form-control" name="observacion" style="max-width: 100%"><?php echo $datos[24]; ?></textarea>
                   </div>
               </div>
+            
+                <div class="col-md-2">
+                      <h5><b>Amperaje de Tratador</b></h5>
+                      <input class="form-control" step="any" name="amperaje" value="<?php echo $datos[25]; ?>" type="number">
+                </div>
              
           </div>
               <br>
