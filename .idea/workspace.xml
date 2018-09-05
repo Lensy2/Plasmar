@@ -1,33 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aabf1275-aaab-4d33-9e57-0dd454e8b784" name="Default" comment="">
+    <list default="true" id="aabf1275-aaab-4d33-9e57-0dd454e8b784" name="Default" comment="Primer commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extruder/controles_calidad/editar_control_calidad.php" beforeDir="false" afterPath="$PROJECT_DIR$/extruder/controles_calidad/editar_control_calidad.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotomulta/ver_fotomulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/fotomulta/ver_fotomulta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/control_requisitos/detalles.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/control_requisitos/detalles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/control_requisitos/detalles_apro.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/control_requisitos/detalles_apro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/control_requisitos/editar_control_reqimp.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/control_requisitos/editar_control_reqimp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/control_requisitos/nuevo_control_requisito_imp.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/control_requisitos/nuevo_control_requisito_imp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/detalles.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/detalles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/muestra_analista/detalles.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/muestra_analista/detalles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/muestra_analista/detalles_apro.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/muestra_analista/detalles_apro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/muestra_impresor/detalles.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/muestra_impresor/detalles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/muestra_matizador/detalles.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/muestra_matizador/detalles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/muestra_supervisor/detalles.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/muestra_supervisor/detalles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/muestra_supervisor/detalles_apro.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/muestra_supervisor/detalles_apro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/premontajes/detalles.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/premontajes/detalles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/premontajes/detalles_apro.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/premontajes/detalles_apro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/premontajes/editar_premontaje.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/premontajes/editar_premontaje.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impresion/premontajes/nuevo_premontaje.php" beforeDir="false" afterPath="$PROJECT_DIR$/impresion/premontajes/nuevo_premontaje.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/funciones.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/funciones.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laminacion/control_requisitos/editar_requisitos.php" beforeDir="false" afterPath="$PROJECT_DIR$/laminacion/control_requisitos/editar_requisitos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laminacion/control_requisitos/nuevo_control_requisito.php" beforeDir="false" afterPath="$PROJECT_DIR$/laminacion/control_requisitos/nuevo_control_requisito.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/refilado/control_requisito/detalles.php" beforeDir="false" afterPath="$PROJECT_DIR$/refilado/control_requisito/detalles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/refilado/control_requisito/editar_requisitos.php" beforeDir="false" afterPath="$PROJECT_DIR$/refilado/control_requisito/editar_requisitos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/refilado/control_requisito/nuevo_control_requisito.php" beforeDir="false" afterPath="$PROJECT_DIR$/refilado/control_requisito/nuevo_control_requisito.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sellado/control_requisitos/editar_requisitos.php" beforeDir="false" afterPath="$PROJECT_DIR$/sellado/control_requisitos/editar_requisitos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sellado/control_requisitos/nuevo_control_requisito.php" beforeDir="false" afterPath="$PROJECT_DIR$/sellado/control_requisitos/nuevo_control_requisito.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,9 +54,65 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-524864820">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="txt" value="20" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="20" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.local" value="4" />
+          <entry key="git.branch.delete.local" value="1" />
+          <entry key="git.branch.rename" value="1" />
+          <entry key="git.checkout.as.new.branch" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="php" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PHP" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.php.composer.command.options" />
+      <usages-collector id="statistics.php.new.test" />
+      <usages-collector id="statistics.php.composer.actions" />
+      <usages-collector id="statistics.php.rename.constructor" />
+      <usages-collector id="statistics.php.new.class" />
+      <usages-collector id="statistics.js.language.service.starts" />
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/refilado/control_requisito/nuevo_control_requisito.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5323">
+              <caret line="425" column="7" lean-forward="true" selection-start-line="425" selection-start-column="7" selection-end-line="425" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#4;n#form#0;n#div#1;n#div#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -132,6 +163,17 @@
             <path>
               <item name="apps" type="b2602c69:ProjectViewProjectNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="apps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="refilado" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="apps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="refilado" type="462c0819:PsiDirectoryNode" />
+              <item name="control_requisito" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -258,16 +300,27 @@
       <updated>1481674556568</updated>
       <workItem from="1481674558920" duration="2055000" />
       <workItem from="1536168577588" duration="5096000" />
+      <workItem from="1536180020560" duration="314000" />
+      <workItem from="1536180370657" duration="1595000" />
     </task>
+    <task id="LOCAL-00001" summary="Primer commit">
+      <created>1536180190750</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1536180190750</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7151000" />
+    <option name="totallyTimeSpent" value="9060000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32980332" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -275,8 +328,7 @@
       <window_info id="Designer" order="5" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="SVN Repositories" weight="0.3295082" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -285,8 +337,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3295082" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.5098361" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -305,61 +359,28 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Primer commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Primer commit" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/fotomulta/nueva_fotomulta.php">
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/fotomulta/nueva_fotomulta.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/fotomulta/foto_multas.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/index.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/autenticacion/autenticacion.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/extruder/detalles.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/class/ConexionPlasmar.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/refilado/control_requisito/nuevo_control_requisito.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/autenticacion/cerrarsesion.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/refilado/control_requisito/detalles.php" />
+    <entry file="file:C:/../..//C:/xampp/htdocs/apps/refilado/control_requisito/editar_requisitos.php" />
+    <entry file="file://$PROJECT_DIR$/refilado/control_requisito/nuevo_control_requisito.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/fotomulta/foto_multas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/index.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/autenticacion/autenticacion.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/extruder/detalles.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="51" column="75" selection-start-line="51" selection-start-column="75" selection-end-line="51" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/class/ConexionPlasmar.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/refilado/control_requisito/nuevo_control_requisito.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3025">
-          <caret line="242" column="35" lean-forward="true" selection-start-line="242" selection-start-column="35" selection-end-line="242" selection-end-column="35" />
+        <state relative-caret-position="5323">
+          <caret line="425" column="7" lean-forward="true" selection-start-line="425" selection-start-column="7" selection-end-line="425" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#4;n#form#0;n#div#1;n#div#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/autenticacion/cerrarsesion.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/refilado/control_requisito/detalles.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:C:/../..//C:/xampp/htdocs/apps/refilado/control_requisito/editar_requisitos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="104" column="62" lean-forward="true" selection-start-line="104" selection-start-column="62" selection-end-line="104" selection-end-column="62" />
         </state>
       </provider>
     </entry>
