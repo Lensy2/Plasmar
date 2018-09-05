@@ -67,6 +67,7 @@
                   <th>NIT</th>
                   <th>DESCRIPCION<input type="checkbox" class="chkplas" class="minimal" value="chk_descripcion" <?php if(in_array('chk_descripcion',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                   <th>CODIGO<input type="checkbox" class="chkplas" class="minimal" value="chk_codigo" <?php if(in_array('chk_codigo',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <th>LIMPIEZA MAQUINA<input></th>
                 </tr>
               </thead>
               <tbody>
