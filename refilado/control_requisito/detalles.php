@@ -61,6 +61,7 @@ if (isset($_SESSION['usuario'])) {
                         <th>NIT</th>
                         <th>DESCRIPCION</th>
                         <th>CODIGO</th>
+                        <th>LAVADO MÁQUINA</th>
                       </tr>
                       </thead>
                       <tbody> 
@@ -73,7 +74,7 @@ if (isset($_SESSION['usuario'])) {
                   <td><?php echo $dataOrden['NIT']; ?></td>
                   <td><?php echo $dataOrden['DESCRIPCIO']."-".$dataOrden['DESCRIP2']; ?></td>
                   <td><?php echo $dataOrden['CODIGO']; ?></td>
-                   
+                  <td><?php echo $dataOrden['LAVADO']; ?></td>
                   </tr>
                   </tbody>
                 </table>

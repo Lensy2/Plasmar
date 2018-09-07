@@ -126,7 +126,7 @@ class Refilado {
       $fecha =  gmdate("d/m/Y H:i:s", time()-($ms));
 
       /*Configuracion de query Transact-SQL*/
-     $tsql = "INSERT INTO refilado_requisitos(num_orden,fecha,operario,estado,fechare,kilos,tcurado,gramosm,refilado,Idusuario,ancho_bobina,peso_guias,maquina_ref,kilos_p,consecutivo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+     $tsql = "INSERT INTO refilado_requisitos(num_orden,fecha,operario,estado,fechare,kilos,tcurado,gramosm,refilado,Idusuario,ancho_bobina,peso_guias,maquina_ref,kilos_p,consecutivo,lavado_maquina) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
       /*Configuracion de parametros, los parametros corresponden al orden de los signos de interrogacion*/
       //$fecha_terminado = '0000-00-00 00:00:00.000';
@@ -145,6 +145,7 @@ class Refilado {
       &$_POST['peso_guias'],
       &$_POST['maquina_ref'],
       &$_POST['kilos_p'],
+      &$_POST['lavado'],
       &$consecutivo
        );
     
@@ -179,7 +180,7 @@ class Refilado {
 
       /*Configuracion de query Transact-SQL*/
      
-     $tsql = "UPDATE refilado_requisitos SET num_orden=?,fecha=?,operario=?,estado=?,fechare=?,kilos=?,tcurado=?,gramosm=?,refilado=?,Idusuario=?,ancho_bobina=?,peso_guias=?,maquina_ref=?,kilos_p=? WHERE Idrefilado_requisitos = ?;";
+     $tsql = "UPDATE refilado_requisitos SET num_orden=?,fecha=?,operario=?,estado=?,fechare=?,kilos=?,tcurado=?,gramosm=?,refilado=?,Idusuario=?,ancho_bobina=?,peso_guias=?,maquina_ref=?,kilos_p=?,lavado_maquina=? WHERE Idrefilado_requisitos = ?;";
       /*Configuracion de parametros, los parametros corresponden al orden de los signos de interrogacion*/
       //$fecha_terminado = '0000-00-00 00:00:00.000';
       $params = array(
@@ -197,6 +198,7 @@ class Refilado {
       &$_POST['peso_guias'],
       &$_POST['maquina_ref'],
       &$_POST['kilos_p'],
+      &$_POST['lavado'],
       &$id_requisito
        );
     

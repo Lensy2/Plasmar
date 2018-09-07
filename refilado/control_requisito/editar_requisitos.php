@@ -67,7 +67,16 @@
                   <th>NIT</th>
                   <th>DESCRIPCION<input type="checkbox" class="chkplas" class="minimal" value="chk_descripcion" <?php if(in_array('chk_descripcion',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                   <th>CODIGO<input type="checkbox" class="chkplas" class="minimal" value="chk_codigo" <?php if(in_array('chk_codigo',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
-                  <th>LIMPIEZA MAQUINA<input></th>
+                  <th>LIMPIEZA MÁQUINA</th>
+                  <BR>
+                  <th>AGUA
+                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <BR>
+                  <th>ALCOHOL
+                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <BR>
+                  <th>JABÓN
+                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                 </tr>
               </thead>
               <tbody>
@@ -78,6 +87,8 @@
                   <td><?php echo $dataOrden['NIT']; ?></td>
                   <td><?php echo $dataOrden['DESCRIPCIO']."-".$dataOrden['DESCRIP2']; ?></td>
                   <td><?php echo $dataOrden['CODIGO']; ?></td>
+                  <td><?php echo $dataOrden['LIMPIEZA']; ?></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
