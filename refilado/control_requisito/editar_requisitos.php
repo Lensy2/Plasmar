@@ -12,6 +12,19 @@
       $pedido = $_GET['pedido'];
       $id = $_GET['id'];
     }
+
+    if (isset($_GET['chk_lavado_maquina1'])){
+      $lavado = $_GET['agua'];
+
+       if (isset($_GET['chk_lavado_maquina2'])) {
+          $lavado = $_GET['alcohol'];
+
+          if (isset($_GET['chk_lavado_maquina3'])) {
+             $lavado = $_GET['jabon'];
+          }
+      }
+    }
+
     include '../../includes/dbconfig.php';
     include '../../model/refilado.php';
     include '../../includes/refilado/header.php';
@@ -70,13 +83,13 @@
                   <th>LIMPIEZA MÁQUINA</th>
                   <BR>
                   <th>AGUA
-                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina1" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                   <BR>
                   <th>ALCOHOL
-                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina2" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                   <BR>
                   <th>JABÓN
-                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina3" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                 </tr>
               </thead>
               <tbody>
