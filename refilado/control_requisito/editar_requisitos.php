@@ -13,18 +13,6 @@
       $id = $_GET['id'];
     }
 
-    if (isset($_GET['chk_lavado_maquina1'])){
-      $lavado = $_GET['agua'];
-
-       if (isset($_GET['chk_lavado_maquina2'])) {
-          $lavado = $_GET['alcohol'];
-
-          if (isset($_GET['chk_lavado_maquina3'])) {
-             $lavado = $_GET['jabon'];
-          }
-      }
-    }
-
     include '../../includes/dbconfig.php';
     include '../../model/refilado.php';
     include '../../includes/refilado/header.php';
