@@ -71,13 +71,13 @@
                   <th>LIMPIEZA MÁQUINA</th>
                   <BR>
                   <th>AGUA
-                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina1" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <input type="checkbox" class="chkplas" class="minimal" value="agua" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                   <BR>
                   <th>ALCOHOL
-                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina2" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <input type="checkbox" class="chkplas" class="minimal" value="alcohol" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                   <BR>
                   <th>JABÓN
-                  <input type="checkbox" class="chkplas" class="minimal" value="chk_lavado_maquina3" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
+                  <input type="checkbox" class="chkplas" class="minimal" value="jabon" <?php if(in_array('chk_lavado_maquina',$refilado)){echo 'checked="checked"';}?> name="chkrefilado[]" ></th>
                 </tr>
               </thead>
               <tbody>

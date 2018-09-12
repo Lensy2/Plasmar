@@ -142,7 +142,7 @@ class Sellado {
       &$_POST['largo'],
       &$_POST['maquina_sell'],
       &$consecutivo
-       );
+     );
     
       /* Create the statement.  */
       $stmt = sqlsrv_prepare( $this->connect(), $tsql, $params);  
